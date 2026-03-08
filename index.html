@@ -1,1 +1,590 @@
-test
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Эльвира Фазлыева | Преподаватель вокала</title>
+    <meta name="description" content="Структурная, бережная и результативная работа с голосом из любой точки мира.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                    },
+                    colors: {
+                        warm: {
+                            50: '#fcfbf9',
+                            100: '#f5f4ef',
+                            200: '#e6e4d8',
+                            300: '#d3cfbc',
+                            400: '#b8b298',
+                            500: '#a39b7d',
+                            600: '#8c8264',
+                            700: '#756a53',
+                            800: '#635a49',
+                            900: '#554d40',
+                        },
+                        accent: '#5A5A40',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #fcfbf9;
+            color: #2d2d2a;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+        }
+
+        .btn-primary {
+            background-color: #5A5A40;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #43432f;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(90, 90, 64, 0.15);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #5A5A40 0%, #8c8264 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #5A5A40;
+            border-radius: 50%;
+            position: absolute;
+            left: -6px;
+            top: 6px;
+            box-shadow: 0 0 0 4px rgba(90, 90, 64, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-warm-200 selection:text-warm-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-card transition-all duration-300" id="navbar">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="font-serif text-2xl font-semibold tracking-wide text-warm-900">ЭФ</div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-warm-800">
+                <a href="#about" class="hover:text-accent transition-colors">Обо мне</a>
+                <a href="#education" class="hover:text-accent transition-colors">Образование</a>
+                <a href="#formats" class="hover:text-accent transition-colors">Форматы работы</a>
+                <a href="#trainings" class="hover:text-accent transition-colors">Тренинги</a>
+            </div>
+            <a href="#contact" class="btn-primary px-6 py-2.5 rounded-full text-sm font-medium hidden md:inline-block">
+                Связаться
+            </a>
+            <button class="md:hidden text-warm-900 text-2xl" id="mobile-menu-btn">
+                <i class="ph ph-list"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-warm-50 border-t border-warm-200 absolute w-full" id="mobile-menu">
+            <div class="flex flex-col px-6 py-4 space-y-4 text-center">
+                <a href="#about" class="text-warm-800 font-medium py-2">Обо мне</a>
+                <a href="#education" class="text-warm-800 font-medium py-2">Образование</a>
+                <a href="#formats" class="text-warm-800 font-medium py-2">Форматы работы</a>
+                <a href="#trainings" class="text-warm-800 font-medium py-2">Тренинги</a>
+                <a href="#contact" class="btn-primary px-6 py-3 rounded-full text-sm font-medium inline-block mx-auto">Связаться</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden relative">
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+            <div class="absolute -top-[20%] -right-[10%] w-[70%] h-[70%] rounded-full bg-warm-200/50 blur-3xl"></div>
+            <div class="absolute top-[40%] -left-[10%] w-[50%] h-[50%] rounded-full bg-warm-300/30 blur-3xl"></div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto text-center" data-aos="fade-up" data-aos-duration="1000">
+            <p class="text-sm md:text-base font-medium tracking-widest uppercase text-warm-600 mb-4">Преподаватель вокала</p>
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-medium leading-tight mb-8 text-warm-900">
+                Эльвира <span class="italic text-gradient">Фазлыева</span>
+            </h1>
+            <p class="text-lg md:text-xl text-warm-700 leading-relaxed max-w-2xl mx-auto mb-10 font-light">
+                Структурная, бережная и результативная работа с голосом из любой точки мира. Я выстраиваю процесс так, чтобы вы понимали, как работает ваш голос, чувствовали его и управляли им осознанно.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#contact" class="btn-primary px-8 py-4 rounded-full text-base font-medium w-full sm:w-auto text-center">
+                    Записаться на консультацию
+                </a>
+                <a href="#about" class="px-8 py-4 rounded-full text-base font-medium border border-warm-300 hover:bg-warm-100 transition-colors w-full sm:w-auto text-center text-warm-800">
+                    Узнать больше
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="font-serif text-4xl md:text-5xl mb-6 text-warm-900">Мой подход</h2>
+                    <p class="text-warm-700 mb-6 leading-relaxed">
+                        Даже в онлайн-формате я внимательно отслеживаю нюансы звучания, дыхания и пережимов мышц, чтобы вы двигались к результату уверенно и безопасно.
+                    </p>
+                    <p class="text-warm-700 mb-8 leading-relaxed">
+                        Мы не просто «поём упражнения» — мы системно формируем устойчивое звучание, расширяем диапазон, снимаем напряжение и развиваем уверенность в голосе. Если вам важны профессиональный подход, чёткая структура и ощутимый прогресс — буду рада работать с вами.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 text-accent"><i class="ph-fill ph-check-circle text-xl"></i></div>
+                            <p class="text-warm-800 font-medium">Обладательница премии Президента РФ</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 text-accent"><i class="ph-fill ph-check-circle text-xl"></i></div>
+                            <p class="text-warm-800 font-medium">Более 10 лет опыта в преподавании вокала</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="mt-1 text-accent"><i class="ph-fill ph-check-circle text-xl"></i></div>
+                            <p class="text-warm-800 font-medium">Сотрудничаю с крупными компаниями и онлайн-школами</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
+                    <div class="space-y-4 mt-8">
+                        <div class="bg-warm-50 p-6 rounded-2xl border border-warm-100">
+                            <i class="ph ph-globe-hemisphere-west text-3xl text-accent mb-4"></i>
+                            <h3 class="font-serif text-xl font-medium mb-2">География</h3>
+                            <p class="text-sm text-warm-600">Россия, Финляндия, Германия, Италия, Бали, Франция. Расстояния — не преграда.</p>
+                        </div>
+                        <div class="bg-warm-100 p-6 rounded-2xl border border-warm-200">
+                            <i class="ph ph-users text-3xl text-accent mb-4"></i>
+                            <h3 class="font-serif text-xl font-medium mb-2">Ученики</h3>
+                            <p class="text-sm text-warm-600">Предприниматели, руководители, тренеры, психологи, юристы, педагоги.</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-warm-100 p-6 rounded-2xl border border-warm-200">
+                            <i class="ph ph-wrench text-3xl text-accent mb-4"></i>
+                            <h3 class="font-serif text-xl font-medium mb-2">Инструменты</h3>
+                            <p class="text-sm text-warm-600">Создаю собственные образовательные инструменты для эффективности.</p>
+                        </div>
+                        <div class="bg-warm-50 p-6 rounded-2xl border border-warm-100">
+                            <i class="ph ph-microphone-stage text-3xl text-accent mb-4"></i>
+                            <h3 class="font-serif text-xl font-medium mb-2">Мастер-классы</h3>
+                            <p class="text-sm text-warm-600">Провожу мастер-классы по вокалу и музыкальной терапии.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-warm-50">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-serif text-4xl md:text-5xl mb-4 text-warm-900">Образование</h2>
+                <p class="text-warm-600">Постоянно совершенствую свои знания и навыки</p>
+            </div>
+            
+            <div class="relative border-l border-warm-300 ml-3 md:ml-0 space-y-10" data-aos="fade-up" data-aos-delay="100">
+                <div class="relative pl-8 md:pl-0">
+                    <div class="md:hidden timeline-dot"></div>
+                    <div class="md:grid md:grid-cols-5 items-center">
+                        <div class="md:col-span-1 text-warm-500 font-serif text-xl md:text-right md:pr-8 md:relative">
+                            2026
+                            <div class="hidden md:block timeline-dot md:left-auto md:-right-[6px]"></div>
+                        </div>
+                        <div class="md:col-span-4 bg-white p-6 rounded-2xl shadow-sm border border-warm-100 md:ml-8">
+                            <p class="font-medium text-warm-900">Обучение на фонопеда</p>
+                            <p class="text-sm text-warm-600 mt-1">Январь - Апрель (продолжается...)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 md:pl-0">
+                    <div class="md:hidden timeline-dot"></div>
+                    <div class="md:grid md:grid-cols-5 items-center">
+                        <div class="md:col-span-1 text-warm-500 font-serif text-xl md:text-right md:pr-8 md:relative">
+                            2025
+                            <div class="hidden md:block timeline-dot md:left-auto md:-right-[6px]"></div>
+                        </div>
+                        <div class="md:col-span-4 bg-white p-6 rounded-2xl shadow-sm border border-warm-100 md:ml-8">
+                            <p class="font-medium text-warm-900">Удостоверение о повышении квалификации</p>
+                            <p class="text-sm text-warm-600 mt-1">BVT PRO</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 md:pl-0">
+                    <div class="md:hidden timeline-dot"></div>
+                    <div class="md:grid md:grid-cols-5 items-center">
+                        <div class="md:col-span-1 text-warm-500 font-serif text-xl md:text-right md:pr-8 md:relative">
+                            2024
+                            <div class="hidden md:block timeline-dot md:left-auto md:-right-[6px]"></div>
+                        </div>
+                        <div class="md:col-span-4 bg-white p-6 rounded-2xl shadow-sm border border-warm-100 md:ml-8">
+                            <p class="font-medium text-warm-900">Удостоверение о повышении квалификации</p>
+                            <p class="text-sm text-warm-600 mt-1">УЦ им. Н.П. Бехтеревой</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 md:pl-0">
+                    <div class="md:hidden timeline-dot"></div>
+                    <div class="md:grid md:grid-cols-5 items-center">
+                        <div class="md:col-span-1 text-warm-500 font-serif text-xl md:text-right md:pr-8 md:relative">
+                            2020-2024
+                            <div class="hidden md:block timeline-dot md:left-auto md:-right-[6px]"></div>
+                        </div>
+                        <div class="md:col-span-4 bg-white p-6 rounded-2xl shadow-sm border border-warm-100 md:ml-8">
+                            <p class="font-medium text-warm-900">Сертификаты о прохождении вокальных курсов</p>
+                            <p class="text-sm text-warm-600 mt-1">Регулярное повышение квалификации (2020, 2023, 2024 гг.)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 md:pl-0">
+                    <div class="md:hidden timeline-dot"></div>
+                    <div class="md:grid md:grid-cols-5 items-center">
+                        <div class="md:col-span-1 text-warm-500 font-serif text-xl md:text-right md:pr-8 md:relative">
+                            2016-2021
+                            <div class="hidden md:block timeline-dot md:left-auto md:-right-[6px]"></div>
+                        </div>
+                        <div class="md:col-span-4 bg-white p-6 rounded-2xl shadow-sm border border-warm-100 md:ml-8">
+                            <p class="font-medium text-warm-900">Высшее музыкально-педагогическое образование</p>
+                            <p class="text-sm text-warm-600 mt-1">Направление “музыкальная терапия”</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 md:pl-0">
+                    <div class="md:hidden timeline-dot"></div>
+                    <div class="md:grid md:grid-cols-5 items-center">
+                        <div class="md:col-span-1 text-warm-500 font-serif text-xl md:text-right md:pr-8 md:relative">
+                            2011
+                            <div class="hidden md:block timeline-dot md:left-auto md:-right-[6px]"></div>
+                        </div>
+                        <div class="md:col-span-4 bg-white p-6 rounded-2xl shadow-sm border border-warm-100 md:ml-8">
+                            <p class="font-medium text-warm-900">Диплом о получении премии Президента РФ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formats Section -->
+    <section id="formats" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-serif text-4xl md:text-5xl mb-4 text-warm-900">Форматы работы</h2>
+                <p class="text-warm-600">Выберите подходящий формат для достижения ваших целей</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Format 1 -->
+                <div class="bg-warm-50 rounded-3xl p-8 border border-warm-200 flex flex-col h-full hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="0">
+                    <div class="mb-6">
+                        <span class="bg-warm-200 text-warm-800 text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full">Индивидуально</span>
+                    </div>
+                    <h3 class="font-serif text-2xl font-medium mb-2">Уроки вокала</h3>
+                    <p class="text-warm-600 text-sm mb-6 pb-6 border-b border-warm-200">Голос в деталях: индивидуальная работа и развитие</p>
+                    
+                    <ul class="space-y-3 mb-8 flex-grow">
+                        <li class="flex items-start gap-3 text-sm text-warm-800">
+                            <i class="ph ph-check text-accent mt-0.5"></i>
+                            <span>Провожу диагностику голоса</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-warm-800">
+                            <i class="ph ph-check text-accent mt-0.5"></i>
+                            <span>Составляю план развития: с чего начинаем, куда идём</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-warm-800">
+                            <i class="ph ph-check text-accent mt-0.5"></i>
+                            <span>Подбираю персональные упражнения</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-warm-800">
+                            <i class="ph ph-check text-accent mt-0.5"></i>
+                            <span>Даю понятные объяснения для быстрого развития</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="mt-auto">
+                        <div class="text-2xl font-serif font-medium text-warm-900 mb-4">3 000 ₽ <span class="text-sm font-sans text-warm-500 font-normal">/ 60 мин</span></div>
+                        <a href="#contact" class="block w-full text-center border border-warm-800 text-warm-800 hover:bg-warm-800 hover:text-white py-3 rounded-full transition-colors font-medium">Записаться</a>
+                    </div>
+                </div>
+
+                <!-- Format 2 -->
+                <div class="bg-warm-800 text-white rounded-3xl p-8 shadow-xl flex flex-col h-full transform md:-translate-y-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="mb-6">
+                        <span class="bg-warm-700 text-warm-100 text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full">Наставничество</span>
+                    </div>
+                    <h3 class="font-serif text-2xl font-medium mb-2">Подписка на педагога</h3>
+                    <p class="text-warm-200 text-sm mb-6 pb-6 border-b border-warm-700">Формат системной работы с голосом для плотного графика</p>
+                    
+                    <ul class="space-y-3 mb-8 flex-grow">
+                        <li class="flex items-start gap-3 text-sm text-warm-100">
+                            <i class="ph ph-check text-warm-300 mt-0.5"></i>
+                            <span>Определяю цель и выстраиваю план на месяц</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-warm-100">
+                            <i class="ph ph-check text-warm-300 mt-0.5"></i>
+                            <span>Персональный план упражнений с аудио-примерами</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-warm-100">
+                            <i class="ph ph-check text-warm-300 mt-0.5"></i>
+                            <span>Еженедельная обратная связь и корректировка плана</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-warm-100">
+                            <i class="ph ph-check text-warm-300 mt-0.5"></i>
+                            <span>Сопровождение между встречами (ответы на вопросы)</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="mt-auto">
+                        <div class="text-2xl font-serif font-medium text-white mb-4">10 000 ₽ <span class="text-sm font-sans text-warm-300 font-normal">/ месяц</span></div>
+                        <a href="#contact" class="block w-full text-center bg-white text-warm-900 hover:bg-warm-100 py-3 rounded-full transition-colors font-medium">Выбрать формат</a>
+                    </div>
+                </div>
+
+                <!-- Format 3 -->
+                <div class="bg-warm-50 rounded-3xl p-8 border border-warm-200 flex flex-col h-full hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="200">
+                    <div class="mb-6">
+                        <span class="bg-warm-200 text-warm-800 text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full">Группа (до 4 чел)</span>
+                    </div>
+                    <h3 class="font-serif text-2xl font-medium mb-2">Групповые уроки</h3>
+                    <p class="text-warm-600 text-sm mb-6 pb-6 border-b border-warm-200">Тема: “Сильный голос”. Практика, вдохновение и поддержка</p>
+                    
+                    <ul class="space-y-3 mb-8 flex-grow">
+                        <li class="flex items-start gap-3 text-sm text-warm-800">
+                            <i class="ph ph-check text-accent mt-0.5"></i>
+                            <span>Работа с плотностью и наполненностью звука</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-warm-800">
+                            <i class="ph ph-check text-accent mt-0.5"></i>
+                            <span>Выносливость аппарата при длительной нагрузке</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-warm-800">
+                            <i class="ph ph-check text-accent mt-0.5"></i>
+                            <span>Чувство голоса в живом звуковом поле</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-warm-800">
+                            <i class="ph ph-check text-accent mt-0.5"></i>
+                            <span>Дыхательные, звуковые упражнения и общая песня</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="mt-auto">
+                        <div class="text-2xl font-serif font-medium text-warm-900 mb-4">1 000 ₽ <span class="text-sm font-sans text-warm-500 font-normal">/ 60 мин</span></div>
+                        <a href="#contact" class="block w-full text-center border border-warm-800 text-warm-800 hover:bg-warm-800 hover:text-white py-3 rounded-full transition-colors font-medium">Записаться</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center" data-aos="fade-up">
+                <p class="text-warm-600 italic">А также: постановка сценического номера, подготовка к звукозаписи песни/стихотворения, ораторское искусство.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trainings Section -->
+    <section id="trainings" class="py-20 bg-warm-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-serif text-4xl md:text-5xl mb-4 text-warm-900">Тренинги</h2>
+                <p class="text-warm-600 max-w-2xl mx-auto">Каждый тренинг направлен на то, чтобы голос зазвучал ярче, тема лишь определяет акцент. Максимальное число участников - 10 человек.</p>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Training 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-warm-200" data-aos="fade-up">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/3">
+                            <h3 class="font-serif text-2xl font-medium mb-3 text-warm-900">«Выносливый голос без усталости»</h3>
+                            <p class="text-warm-600 text-sm">Для тех, кто много говорит на работе и сталкивается с потерей голоса, хрипотой или осиплостью.</p>
+                        </div>
+                        <div class="md:w-2/3 border-t md:border-t-0 md:border-l border-warm-200 pt-6 md:pt-0 md:pl-8">
+                            <h4 class="font-medium text-warm-800 mb-3">Вы узнаете, как:</h4>
+                            <ul class="space-y-2 text-warm-700 text-sm">
+                                <li class="flex items-start gap-2"><i class="ph ph-caret-right text-accent mt-0.5"></i> Сохранить голос чистым и сильным даже после целого дня переговоров</li>
+                                <li class="flex items-start gap-2"><i class="ph ph-caret-right text-accent mt-0.5"></i> Освоить техники восстановления после нагрузки</li>
+                                <li class="flex items-start gap-2"><i class="ph ph-caret-right text-accent mt-0.5"></i> Говорить уверенно, без риска «сорвать» голос</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Training 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-warm-200" data-aos="fade-up">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/3">
+                            <h3 class="font-serif text-2xl font-medium mb-3 text-warm-900">«Сильный и звонкий голос»</h3>
+                            <p class="text-warm-600 text-sm">Для тех, чей голос звучит слишком тихо, глухо или слишком высоко.</p>
+                        </div>
+                        <div class="md:w-2/3 border-t md:border-t-0 md:border-l border-warm-200 pt-6 md:pt-0 md:pl-8">
+                            <h4 class="font-medium text-warm-800 mb-3">Вы научитесь:</h4>
+                            <ul class="space-y-2 text-warm-700 text-sm">
+                                <li class="flex items-start gap-2"><i class="ph ph-caret-right text-accent mt-0.5"></i> Управлять силой и тембром голоса</li>
+                                <li class="flex items-start gap-2"><i class="ph ph-caret-right text-accent mt-0.5"></i> Звучать увереннее и убедительнее</li>
+                                <li class="flex items-start gap-2"><i class="ph ph-caret-right text-accent mt-0.5"></i> Использовать голос так, чтобы его было приятно и легко слушать</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Training 3 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-warm-200" data-aos="fade-up">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/3">
+                            <h3 class="font-serif text-2xl font-medium mb-3 text-warm-900">«Четкая и убедительная речь»</h3>
+                            <p class="text-warm-600 text-sm">Для тех, кого часто «не слышат» или не воспринимают всерьез.</p>
+                        </div>
+                        <div class="md:w-2/3 border-t md:border-t-0 md:border-l border-warm-200 pt-6 md:pt-0 md:pl-8">
+                            <h4 class="font-medium text-warm-800 mb-3">Тренинг помогает:</h4>
+                            <ul class="space-y-2 text-warm-700 text-sm">
+                                <li class="flex items-start gap-2"><i class="ph ph-caret-right text-accent mt-0.5"></i> Развить четкую дикцию и выразительность</li>
+                                <li class="flex items-start gap-2"><i class="ph ph-caret-right text-accent mt-0.5"></i> Выстраивать речь так, чтобы привлекать внимание</li>
+                                <li class="flex items-start gap-2"><i class="ph ph-caret-right text-accent mt-0.5"></i> Доносить мысли ясно и добиваться понимания с первого раза</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 bg-warm-800 text-warm-100 p-6 md:p-8 rounded-3xl text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-6" data-aos="zoom-in">
+                <div>
+                    <h4 class="font-serif text-xl mb-2 text-white">Структура каждого тренинга:</h4>
+                    <p class="text-sm text-warm-300">Вводная часть • Практические упражнения • Рекомендации по гигиене голоса • Гайд “Как настроиться на важное выступление” (PDF)</p>
+                </div>
+                <a href="#contact" class="btn-primary bg-white text-warm-900 hover:bg-warm-100 px-8 py-3 rounded-full font-medium whitespace-nowrap">Записаться</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Contact Section -->
+    <section id="contact" class="py-24 bg-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-warm-200 rounded-full blur-3xl opacity-50 -z-10"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-warm-300 rounded-full blur-3xl opacity-30 -z-10"></div>
+        
+        <div class="max-w-3xl mx-auto px-6 text-center" data-aos="fade-up">
+            <h2 class="font-serif text-4xl md:text-5xl mb-6 text-warm-900">Готовы раскрыть свой голос?</h2>
+            <p class="text-lg text-warm-600 mb-10">
+                Запишитесь на бесплатную консультацию, чтобы обсудить ваши цели и подобрать оптимальный формат работы.
+            </p>
+            
+            <form class="space-y-4 max-w-md mx-auto text-left" onsubmit="event.preventDefault(); alert('Спасибо за заявку! В реальном проекте здесь будет отправка формы.');">
+                <div>
+                    <label class="block text-sm font-medium text-warm-800 mb-1">Ваше имя</label>
+                    <input type="text" required class="w-full px-4 py-3 rounded-xl border border-warm-300 focus:outline-none focus:ring-2 focus:ring-accent bg-warm-50">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-warm-800 mb-1">Телефон или Telegram</label>
+                    <input type="text" required class="w-full px-4 py-3 rounded-xl border border-warm-300 focus:outline-none focus:ring-2 focus:ring-accent bg-warm-50">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-warm-800 mb-1">Какой формат вас интересует?</label>
+                    <select class="w-full px-4 py-3 rounded-xl border border-warm-300 focus:outline-none focus:ring-2 focus:ring-accent bg-warm-50">
+                        <option>Индивидуальные уроки</option>
+                        <option>Подписка на педагога</option>
+                        <option>Групповые уроки</option>
+                        <option>Тренинги</option>
+                        <option>Пока не знаю, нужна консультация</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full btn-primary py-4 rounded-xl font-medium text-lg mt-4">
+                    Отправить заявку
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-warm-900 text-warm-200 py-12 border-t border-warm-800">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <div class="font-serif text-2xl font-semibold tracking-wide text-white mb-2">Эльвира Фазлыева</div>
+                <p class="text-sm text-warm-400">Преподаватель вокала • Музыкальный терапевт</p>
+            </div>
+            
+            <div class="flex space-x-6">
+                <a href="#" class="text-warm-400 hover:text-white transition-colors"><i class="ph ph-telegram-logo text-2xl"></i></a>
+                <a href="#" class="text-warm-400 hover:text-white transition-colors"><i class="ph ph-whatsapp-logo text-2xl"></i></a>
+                <a href="#" class="text-warm-400 hover:text-white transition-colors"><i class="ph ph-instagram-logo text-2xl"></i></a>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto px-6 mt-8 pt-8 border-t border-warm-800 text-center text-sm text-warm-500">
+            &copy; 2026 Эльвира Фазлыева. Все права защищены.
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS animations
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on click
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-sm');
+                navbar.classList.replace('py-4', 'py-2');
+            } else {
+                navbar.classList.remove('shadow-sm');
+                navbar.classList.replace('py-2', 'py-4');
+            }
+        });
+    </script>
+</body>
+</html>
+
