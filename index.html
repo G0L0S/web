@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Эльвира Фазлыева | Преподаватель вокала</title>
     <meta name="description" content="Структурная, бережная и результативная работа с голосом из любой точки мира.">
     
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -41,20 +48,49 @@
             }
         }
     </script>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <!-- Phosphor Icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        body {
+            background-color: #fcfbf9;
+            color: #2d2d2a;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+        }
 
-    <link rel="stylesheet" href="/src/index.css">
+        .btn-primary {
+            background-color: #5A5A40;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #43432f;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(90, 90, 64, 0.15);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #5A5A40 0%, #8c8264 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #5A5A40;
+            border-radius: 50%;
+            position: absolute;
+            left: -6px;
+            top: 6px;
+            box-shadow: 0 0 0 4px rgba(90, 90, 64, 0.1);
+        }
+    </style>
 </head>
 <body class="antialiased selection:bg-warm-200 selection:text-warm-900">
 
@@ -143,7 +179,7 @@
                 </div>
                 
                 <div data-aos="fade-left" class="relative">
-                    <img src="https://i3.imageban.ru/out/2026/03/09/e079863c41f2db5851502a3943f7e8c2.png" alt="Студия вокала" class="rounded-3xl shadow-xl w-full object-cover aspect-[4/5]" referrerPolicy="no-referrer">
+                    <img src="https://i3.imageban.ru/out/2026/03/09/e079863c41f2db5851502a3943f7e8c2.png" alt="Студия вокала" class="rounded-3xl shadow-xl w-full object-cover aspect-[5/7]" referrerPolicy="no-referrer">
                     <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-lg border border-warm-100 hidden md:block">
                         <p class="font-serif text-3xl text-warm-900 mb-1">10+</p>
                         <p class="text-sm text-warm-600 font-medium">лет опыта</p>
@@ -558,6 +594,96 @@
         </div>
     </footer>
 
-    <script type="module" src="/src/main.js"></script>
+    <script>
+        // Initialize AOS animations
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on click
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-sm');
+                navbar.classList.replace('py-4', 'py-2');
+            } else {
+                navbar.classList.remove('shadow-sm');
+                navbar.classList.replace('py-2', 'py-4');
+            }
+        });
+
+        // Telegram Bot Integration
+        const BOT_TOKEN_BASE64 = "ODQzMDkzNjAyMjpBQUdjQUd2R0FNdGVqX2p2ekNmU2h5eWY1WjU2LW1QYnBNTQ==";
+        const botToken = atob(BOT_TOKEN_BASE64);
+        
+        // ВАЖНО: Укажите здесь ваш CHAT_ID, куда бот будет отправлять сообщения
+        // Узнать свой CHAT_ID можно у бота @userinfobot в Telegram
+        const CHAT_ID = "362200305"; 
+
+        async function submitForm(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const name = form.querySelector('[name="name"]').value;
+            const contact = form.querySelector('[name="contact"]').value;
+            const format = form.querySelector('[name="format"]').value;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            
+            const message = `🎵 *Новая заявка с сайта!*\n\n*Имя:* ${name}\n*Контакты:* ${contact}\n*Формат:* ${format}`;
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправка...';
+            
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+                
+                if (response.ok) {
+                    alert('Спасибо за заявку! Я свяжусь с вами в ближайшее время.');
+                    form.reset();
+                } else {
+                    const data = await response.json();
+                    if (data.description && data.description.includes('chat not found')) {
+                        alert('Ошибка: Не настроен CHAT_ID. Пожалуйста, укажите ваш CHAT_ID в коде сайта.');
+                    } else {
+                        alert('Произошла ошибка при отправке. Пожалуйста, попробуйте позже.');
+                    }
+                }
+            } catch (error) {
+                alert('Произошла ошибка при отправке. Проверьте подключение к интернету.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Отправить заявку';
+            }
+        }
+    </script>
 </body>
 </html>
