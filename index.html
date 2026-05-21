@@ -559,52 +559,91 @@
             </div>
         </div>
     </section>
-<section id="reviews" class="py-20 bg-warm-50">
-    <div class="max-w-6xl mx-auto px-6">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<section id="reviews" class="py-20 bg-warm-50 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 relative">
         
         <h2 class="text-3xl md:text-4xl font-serif text-center text-warm-900 mb-16" data-aos="fade-up">
             Отзывы учеников
         </h2>
         
-        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            
-            <div class="flex flex-col items-center bg-white p-6 rounded-[2rem] shadow-sm border border-warm-100" data-aos="fade-up">
-                <div class="overflow-hidden rounded-xl border border-warm-200 shadow-sm w-full">
-                    <img src="Дина Смирнова.jpg" alt="Отзыв ученика" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
+        <div class="swiper reviewsSwiper max-w-4xl mx-auto px-4">
+            <div class="swiper-wrapper">
+                
+                <div class="swiper-slide h-auto flex flex-col justify-between bg-white p-6 rounded-[2rem] shadow-sm border border-warm-100 box-border">
+                    <div class="overflow-hidden rounded-xl border border-warm-200 shadow-sm w-full flex-1">
+                        <img src="Дина Смирнова.jpg" alt="Отзыв ученика" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <p class="mt-4 text-sm font-medium text-warm-600 text-center tracking-wide uppercase">
+                        Практикующий психолог
+                    </p>
                 </div>
-                <p class="mt-4 text-sm font-medium text-warm-600 text-center tracking-wide uppercase">
-                    Практикующий психолог
-                </p>
+
+                <div class="swiper-slide h-auto flex flex-col justify-between bg-white p-6 rounded-[2rem] shadow-sm border border-warm-100 box-border">
+                    <div class="overflow-hidden rounded-xl border border-warm-200 shadow-sm w-full flex-1">
+                        <img src="Катя Проданова.png" alt="Отзыв ученика" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <p class="mt-4 text-sm font-medium text-warm-600 text-center tracking-wide uppercase">
+                        Репетитор по английскому языку
+                    </p>
+                </div>
+
+                <div class="swiper-slide h-auto flex flex-col justify-between bg-white p-6 rounded-[2rem] shadow-sm border border-warm-100 box-border">
+                    <div class="overflow-hidden rounded-xl border border-warm-200 shadow-sm w-full flex-1">
+                        <img src="Сергей Сивульский.jpg" alt="Отзыв ученика" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <p class="mt-4 text-sm font-medium text-warm-600 text-center tracking-wide uppercase">
+                        Вокалист, Автор песен, Актер
+                    </p>
+                </div>
+
+                <div class="swiper-slide h-auto flex flex-col justify-between bg-white p-6 rounded-[2rem] shadow-sm border border-warm-100 box-border">
+                    <div class="overflow-hidden rounded-xl border border-warm-200 shadow-sm w-full flex-1">
+                        <img src="Эльвира Шарафутдинова.jpg" alt="Отзыв ученика" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <p class="mt-4 text-sm font-medium text-warm-600 text-center tracking-wide uppercase">
+                        Врач-неонатолог
+                    </p>
+                </div>
+
             </div>
 
-            <div class="flex flex-col items-center bg-white p-6 rounded-[2rem] shadow-sm border border-warm-100" data-aos="fade-up" data-aos-delay="100">
-                <div class="overflow-hidden rounded-xl border border-warm-200 shadow-sm w-full">
-                    <img src="Катя Проданова.png" alt="Отзыв ученика" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
-                </div>
-                <p class="mt-4 text-sm font-medium text-warm-600 text-center tracking-wide uppercase">
-                    Репетитор по английскому языку
-                </p>
-            </div>
-            <div class="flex flex-col items-center bg-white p-6 rounded-[2rem] shadow-sm border border-warm-100" data-aos="fade-up" data-aos-delay="100">
-                <div class="overflow-hidden rounded-xl border border-warm-200 shadow-sm w-full">
-                    <img src="Сергей Сивульский.jpg" alt="Отзыв ученика" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
-                </div>
-                <p class="mt-4 text-sm font-medium text-warm-600 text-center tracking-wide uppercase">
-                    Вокалист, Автор песен, Актер
-                </p>
-            </div>
-            <div class="flex flex-col items-center bg-white p-6 rounded-[2rem] shadow-sm border border-warm-100" data-aos="fade-up" data-aos-delay="100">
-                <div class="overflow-hidden rounded-xl border border-warm-200 shadow-sm w-full">
-                    <img src="Эльвира Шарафутдинова.jpg" alt="Отзыв ученика" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
-                </div>
-                <p class="mt-4 text-sm font-medium text-warm-600 text-center tracking-wide uppercase">
-                    врач-неонатолог
-                </p>
-            </div>
-
+            <div class="swiper-pagination !-bottom-2"></div>
         </div>
+
+        <div class="swiper-button-prev !text-warm-800 !hidden md:!flex !left-4 lg:!left-12"></div>
+        <div class="swiper-button-next !text-warm-800 !hidden md:!flex !right-4 lg:!right-12"></div>
+        
     </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        new Swiper('.reviewsSwiper', {
+            slidesPerView: 1,         // На телефонах показываем 1 отзыв
+            spaceBetween: 24,         // Расстояние между карточками
+            loop: true,               // Бесконечная прокрутка
+            autoHeight: true,         // Слайдер подстраивается под высоту скриншота
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                768: {                // На компьютерах (от 768px) показываем ровно 2 колонки
+                    slidesPerView: 2,
+                    spaceBetween: 32,
+                }
+            }
+        });
+    });
+</script>
  <section id="contact" class="py-24 bg-white relative overflow-hidden">
         <div class="absolute top-0 right-0 w-64 h-64 bg-warm-200 rounded-full blur-3xl opacity-50 -z-10"></div>
         <div class="absolute bottom-0 left-0 w-64 h-64 bg-warm-300 rounded-full blur-3xl opacity-30 -z-10"></div>
