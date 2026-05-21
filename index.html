@@ -570,6 +570,7 @@
         width: 100% !important;
         opacity: 0;
         transition: opacity 0.3s ease;
+        box-sizing: border-box;
     }
     .reviews-section .swiper-slide-active {
         opacity: 1;
@@ -581,7 +582,7 @@
         color: #44403c !important;
         font-weight: 300;
     }
-    /* Пагинация строго ПОД скриншотом */
+    /* Пагинация строго ПОД карточкой */
     .reviews-section .swiper-pagination {
         position: relative !important;
         margin-top: 32px !important;
@@ -599,7 +600,7 @@
             Отзывы учеников
         </h2>
         
-        <div class="relative max-w-[600px] mx-auto mb-24" data-aos="fade-up">
+        <div class="relative max-w-[600px] mx-auto" data-aos="fade-up">
             <div class="swiper myReviewsSwiper">
                 <div class="swiper-wrapper">
                     
@@ -614,10 +615,40 @@
 
                     <div class="swiper-slide">
                         <p class="mb-6 text-base md:text-lg font-medium text-warm-600 text-center tracking-[0.2em] uppercase">
+                            Преподаватель в школе
+                        </p>
+                        <div class="bg-white p-8 md:p-10 rounded-[2rem] border border-warm-200 shadow-sm w-full text-center flex flex-col justify-center min-h-[350px]">
+                            <i class="ph ph-quotes text-4xl text-warm-300 mb-4 block mx-auto"></i>
+                            <p class="text-warm-800 text-base md:text-lg italic leading-relaxed mb-6">
+                                «Я очень рада, что нашла такого учителя по вокалу, как ты! У тебя сильный, красивый голос, очень мотивируешь и, самое главное, хотелось поблагодарить за располагающую теплую атмосферу на уроках, доброе отношение и за то, что вселяешь веру в то, что все получится! И голос мой раскрыла и оптимизму научила)) Идеальный учитель, по-моему, очень крутая!»
+                            </p>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-warm-400 block border-t border-warm-100 pt-4">
+                                Работа с тремором в голосе и пережимом мышц гортани
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <p class="mb-6 text-base md:text-lg font-medium text-warm-600 text-center tracking-[0.2em] uppercase">
                             Репетитор по английскому языку
                         </p>
                         <div class="overflow-hidden rounded-[2rem] border border-warm-200 shadow-sm w-full bg-white">
                             <img src="Катя Проданова.png" alt="Отзыв" class="w-full h-auto object-contain block">
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <p class="mb-6 text-base md:text-lg font-medium text-warm-600 text-center tracking-[0.2em] uppercase">
+                            Руководитель школы музыки
+                        </p>
+                        <div class="bg-white p-8 md:p-10 rounded-[2rem] border border-warm-200 shadow-sm w-full text-center flex flex-col justify-center min-h-[350px]">
+                            <i class="ph ph-quotes text-4xl text-warm-300 mb-4 block mx-auto"></i>
+                            <p class="text-warm-800 text-base md:text-lg italic leading-relaxed mb-6">
+                                «Эльвирочка, спасибо тебе огромное за твою работу, за твой профессионализм. Я за время наших занятий, благодаря тебе, открыла как будто новую планету под названием “вокал”. С тобой заниматься очень интересно. Фундамент ты мне крепкий заложила. Я уже многое понимаю и понимаю, куда дальше двигаться)»
+                            </p>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-warm-400 block border-t border-warm-100 pt-4">
+                                Работа над силой голоса через работу с телом
+                            </span>
                         </div>
                     </div>
 
@@ -632,6 +663,21 @@
 
                     <div class="swiper-slide">
                         <p class="mb-6 text-base md:text-lg font-medium text-warm-600 text-center tracking-[0.2em] uppercase">
+                            Руководитель IT-компании
+                        </p>
+                        <div class="bg-white p-8 md:p-10 rounded-[2rem] border border-warm-200 shadow-sm w-full text-center flex flex-col justify-center min-h-[350px]">
+                            <i class="ph ph-quotes text-4xl text-warm-300 mb-4 block mx-auto"></i>
+                            <p class="text-warm-800 text-base md:text-lg italic leading-relaxed mb-6">
+                                «Эльвира!!! Спасибо тебе бесконечное, мы проделали огромную работу, и сотворили чудо! Видео операторы не все сняли, в середине песни Катя плакала, а я смотрел на нее и тоже плакал, чуть не сбился с пения из-за этого )))»
+                            </p>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-warm-400 block border-t border-warm-100 pt-4">
+                                Подготовка сценического номера к свадьбе
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <p class="mb-6 text-base md:text-lg font-medium text-warm-600 text-center tracking-[0.2em] uppercase">
                             Врач-неонатолог
                         </p>
                         <div class="overflow-hidden rounded-[2rem] border border-warm-200 shadow-sm w-full bg-white">
@@ -639,86 +685,32 @@
                         </div>
                     </div>
 
+                    <div class="swiper-slide">
+                        <p class="mb-6 text-base md:text-lg font-medium text-warm-600 text-center tracking-[0.2em] uppercase">
+                            Архитектор, Иллюстратор
+                        </p>
+                        <div class="bg-white p-8 md:p-10 rounded-[2rem] border border-warm-200 shadow-sm w-full text-center flex flex-col justify-center min-h-[350px]">
+                            <i class="ph ph-quotes text-4xl text-warm-300 mb-4 block mx-auto"></i>
+                            <p class="text-warm-800 text-sm md:text-base italic leading-relaxed text-left mb-4">
+                                «Хотела поделиться прорывом, случившимся буквально на днях со мной, спустя полгода после занятий вокалом — <strong>Я, НАКОНЕЦ-ТО, НАЩУПАЛА ТВЭНГ!</strong> Те самые резонаторы, которые резонируют в носу )) И несмотря на то, что я смотрела очень много разной информации в интернете на эту тему, здесь заслуга именно Эльвиры — потому что я очень четко помню, как мы его искали, и ее объяснения...»
+                            </p>
+                            <p class="text-warm-800 text-sm md:text-base italic leading-relaxed text-left mb-6">
+                                «Эльвира — просто супер-препод и замечательный человек, я готова быть амбассадором вашей школы ради нее! Мне все очень-очень понравилось, нащупала много разных новых “мышц”, научилась в целом слушать музыку…»
+                            </p>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-warm-400 block border-t border-warm-100 pt-4">
+                                Работа над звонкостью и плотностью голоса
+                            </span>
+                        </div>
+                    </div>
+
                 </div>
+
                 <div class="swiper-pagination"></div>
             </div>
 
             <div class="swiper-button-prev !hidden md:!flex !-left-12 lg:!-left-16 !top-[calc(50%+16px)]"></div>
             <div class="swiper-button-next !hidden md:!flex !-right-12 lg:!-right-16 !top-[calc(50%+16px)]"></div>
-        </div>
-
-        <div class="max-w-4xl mx-auto">
-            <h3 class="text-xl md:text-2xl font-serif text-center text-warm-800 mb-12" data-aos="fade-up">
-                Истории и результаты занятий
-            </h3>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                
-                <div class="bg-white p-8 rounded-3xl border border-warm-200/60 shadow-sm flex flex-col justify-between h-full" data-aos="fade-up">
-                    <div>
-                        <div class="flex flex-col gap-1 mb-4 border-b border-warm-100 pb-4">
-                            <span class="text-xs font-semibold uppercase tracking-wider text-warm-500">Преподаватель в школе</span>
-                            <span class="text-sm font-medium text-warm-700 italic">Специфика: Работа с тремором в голосе и пережимом мышц гортани</span>
-                        </div>
-                        <p class="text-warm-800 text-sm leading-relaxed">
-                            «Я очень рада, что нашла такого учителя по вокалу, как ты! У тебя сильный, красивый голос, очень мотивируешь и, самое главное, хотелось поблагодарить за располагающую теплую атмосферу на уроках, доброе отношение и за то, что вселяешь веру в то, что все получится! И голос мой раскрыла и оптимизму научила)) Идеальный учитель, по-моему, очень крутая!»
-                        </p>
-                    </div>
-                </div>
-
-                <div class="bg-white p-8 rounded-3xl border border-warm-200/60 shadow-sm flex flex-col justify-between h-full" data-aos="fade-up">
-                    <div>
-                        <div class="flex flex-col gap-1 mb-4 border-b border-warm-100 pb-4">
-                            <span class="text-xs font-semibold uppercase tracking-wider text-warm-500">Руководитель школы музыки</span>
-                            <span class="text-sm font-medium text-warm-700 italic">Специфика: Работа над силой голоса через работу с телом</span>
-                        </div>
-                        <p class="text-warm-800 text-sm leading-relaxed">
-                            «Эльвирочка, спасибо тебе огромное за твою работу, за твой профессионализм. Я за время наших занятий, благодаря тебе, открыла как будто новую планету под названием “вокал”. С тобой заниматься очень интересно. Фундамент ты мне крепкий заложила. Я уже многое понимаю и понимаю, куда дальше двигаться)»
-                        </p>
-                    </div>
-                </div>
-
-                <div class="bg-white p-8 rounded-3xl border border-warm-200/60 shadow-sm flex flex-col justify-between h-full" data-aos="fade-up">
-                    <div>
-                        <div class="flex flex-col gap-1 mb-4 border-b border-warm-100 pb-4">
-                            <span class="text-xs font-semibold uppercase tracking-wider text-warm-500">Руководитель IT-компании</span>
-                            <span class="text-sm font-medium text-warm-700 italic">Специфика: Подготовка сценического номера к свадьбе</span>
-                        </div>
-                        <p class="text-warm-800 text-sm leading-relaxed">
-                            «Эльвира!!! Спасибо тебе бесконечное, мы проделали огромную работу, и сотворили чудо! Видеооператоры не все сняли, в середине песни Катя плакала, а я смотрел на нее и тоже плакал, чуть не сбился с пения из-за этого )))»
-                        </p>
-                    </div>
-                </div>
-
-                <div class="bg-white p-8 rounded-3xl border border-warm-200/60 shadow-sm flex flex-col justify-between h-full" data-aos="fade-up">
-                    <div>
-                        <div class="flex flex-col gap-1 mb-4 border-b border-warm-100 pb-4">
-                            <span class="text-xs font-semibold uppercase tracking-wider text-warm-500">Архитектор, Иллюстратор</span>
-                            <span class="text-sm font-medium text-warm-700 italic">Специфика: Работа над звонкостью и плотностью голоса</span>
-                        </div>
-                        <p class="text-warm-800 text-sm leading-relaxed mb-4">
-                            «Хотела поделиться прорывом, случившимся буквально на днях со мной, спустя полгода после занятий вокалом — <strong>Я, НАКОНЕЦ-ТО, НАЩУПАЛА ТВЭНГ!</strong> Те самые резонаторы, которые резонируют в носу )) И несмотря на то, что я смотрела очень много разной информации в интернете на эту тему, здесь заслуга именно Эльвиры...»
-                        </p>
-                        <p class="text-warm-800 text-sm leading-relaxed">
-                            «Эльвира — просто супер-препод и замечательный человек, я готова быть амбассадором вашей школы ради нее! Мне все очень-очень понравилось, нащупала много разных новых “мышц”, научилась в целом слушать музыку…»
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="text-center mt-16" data-aos="fade-up">
-                <a href="https://brisaschool.getcourse.ru/work?fbclid=PAT01DUAQBDRdleHRuA2FlbQIxMABzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAadIPMg2TbOPaM_RJou_dEPTdkq_JLGsPGjAgSpUe5DgH-t4F0OxdGk4LnMb6g_aem_qJ-snbLJt4L3tDSI7KZIAw" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   class="inline-flex items-center justify-center px-8 py-3.5 bg-transparent border border-warm-800 text-warm-800 rounded-2xl hover:bg-warm-800 hover:text-white transition-all font-medium text-sm shadow-sm tracking-wide">
-                   Читать больше отзывов
-                   <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                   </svg>
-                </a>
-            </div>
-
         </div>
     </div>
 </section>
@@ -731,7 +723,7 @@
             slidesPerView: 1,
             spaceBetween: 40,
             loop: true,
-            autoHeight: true,
+            autoHeight: true, // Идеально выравнивает высоту под картинки и под текст
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
@@ -740,83 +732,6 @@
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
-        });
-    });
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        new Swiper('.myReviewsSwiper', {
-            slidesPerView: 1,           // Жестко фиксируем 1 слайд
-            spaceBetween: 30,           // Отступ между слайдами при перелистывании
-            loop: true,                 // Бесконечная прокрутка
-            autoHeight: true,           // Автоподстройка высоты под каждый скриншот
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
-    });
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const swiper = new Swiper('.reviewsSwiper', {
-            slidesPerView: 1,           // Всегда 1 слайд на экране
-            spaceBetween: 50,           // Большой отступ для мягкости перехода
-            loop: true,                 // Зацикливание
-            centeredSlides: true,
-            autoHeight: true,           // Подстройка под высоту картинки
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            // Плавность появления
-            effect: 'fade',
-            fadeEffect: {
-                crossFade: true
-            },
-            // Либо обычный свайп, если эффект fade кажется слишком медленным:
-            // effect: 'slide'
-        });
-    });
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        new Swiper('.reviewsSwiper', {
-            slidesPerView: 1,         // На телефонах показываем 1 отзыв
-            spaceBetween: 24,         // Расстояние между карточками
-            loop: true,               // Бесконечная прокрутка
-            autoHeight: true,         // Слайдер подстраивается под высоту скриншота
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                768: {                // На компьютерах (от 768px) показываем ровно 2 колонки
-                    slidesPerView: 2,
-                    spaceBetween: 32,
-                }
-            }
         });
     });
 </script>
