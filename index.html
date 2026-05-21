@@ -578,51 +578,79 @@
     }
 </style>
 
-<section id="reviews" class="py-20 bg-warm-50 overflow-hidden">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<style>
+    /* Фиксируем отображение строго одного слайда */
+    .reviews-section .swiper-slide {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    .reviews-section .swiper-slide-active {
+        opacity: 1;
+    }
+    /* Красивые тонкие стрелки в цвет кнопок сайта (warm-800) */
+    .reviews-section .swiper-button-next::after, 
+    .reviews-section .swiper-button-prev::after {
+        font-size: 24px !important;
+        color: #44403c !important;
+        font-weight: 300;
+    }
+    /* Цвет активной точки пагинации */
+    .reviews-section .swiper-pagination-bullet-active {
+        background: #44403c !important;
+    }
+</style>
+
+<section id="reviews" class="py-20 bg-warm-50 overflow-hidden reviews-section">
     <div class="max-w-6xl mx-auto px-6">
         
         <h2 class="text-3xl md:text-4xl font-serif text-center text-warm-900 mb-16" data-aos="fade-up">
             Отзывы учеников
         </h2>
         
-        <div class="relative max-w-[700px] mx-auto" data-aos="fade-up">
+        <div class="relative max-w-[600px] mx-auto" data-aos="fade-up">
             
-            <div class="swiper reviewsSwiper pb-12">
+            <div class="swiper myReviewsSwiper pb-12">
                 <div class="swiper-wrapper">
                     
-                    <div class="swiper-slide flex flex-col items-center">
+                    <div class="swiper-slide">
                         <p class="mb-6 text-sm font-medium text-warm-600 text-center tracking-[0.2em] uppercase">
                             Практикующий психолог
                         </p>
-                        <div class="bg-white p-4 rounded-[2.5rem] shadow-xl border border-warm-100 w-full">
-                            <img src="Дина Смирнова.jpg" alt="Отзыв" class="w-full h-auto rounded-2xl">
+                        <div class="overflow-hidden rounded-[2rem] border border-warm-200 shadow-sm w-full bg-white">
+                            <img src="Дина Смирнова.jpg" alt="Отзыв" class="w-full h-auto object-contain">
                         </div>
                     </div>
 
-                    <div class="swiper-slide flex flex-col items-center">
+                    <div class="swiper-slide">
                         <p class="mb-6 text-sm font-medium text-warm-600 text-center tracking-[0.2em] uppercase">
                             Репетитор по английскому языку
                         </p>
-                        <div class="bg-white p-4 rounded-[2.5rem] shadow-xl border border-warm-100 w-full">
-                            <img src="Катя Проданова.png" alt="Отзыв" class="w-full h-auto rounded-2xl">
+                        <div class="overflow-hidden rounded-[2rem] border border-warm-200 shadow-sm w-full bg-white">
+                            <img src="Катя Проданова.png" alt="Отзыв" class="w-full h-auto object-contain">
                         </div>
                     </div>
 
-                    <div class="swiper-slide flex flex-col items-center">
+                    <div class="swiper-slide">
                         <p class="mb-6 text-sm font-medium text-warm-600 text-center tracking-[0.2em] uppercase">
                             Вокалист, Автор песен, Актер
                         </p>
-                        <div class="bg-white p-4 rounded-[2.5rem] shadow-xl border border-warm-100 w-full">
-                            <img src="Сергей Сивульский.jpg" alt="Отзыв" class="w-full h-auto rounded-2xl">
+                        <div class="overflow-hidden rounded-[2rem] border border-warm-200 shadow-sm w-full bg-white">
+                            <img src="Сергей Сивульский.jpg" alt="Отзыв" class="w-full h-auto object-contain">
                         </div>
                     </div>
 
-                    <div class="swiper-slide flex flex-col items-center">
+                    <div class="swiper-slide">
                         <p class="mb-6 text-sm font-medium text-warm-600 text-center tracking-[0.2em] uppercase">
                             Врач-неонатолог
                         </p>
-                        <div class="bg-white p-4 rounded-[2.5rem] shadow-xl border border-warm-100 w-full">
-                            <img src="Эльвира Шарафутдинова.jpg" alt="Отзыв" class="w-full h-auto rounded-2xl">
+                        <div class="overflow-hidden rounded-[2rem] border border-warm-200 shadow-sm w-full bg-white">
+                            <img src="Эльвира Шарафутдинова.jpg" alt="Отзыв" class="w-full h-auto object-contain">
                         </div>
                     </div>
 
@@ -631,11 +659,33 @@
                 <div class="swiper-pagination"></div>
             </div>
 
-            <div class="swiper-button-prev !hidden md:!flex !-left-16 lg:!-left-20"></div>
-            <div class="swiper-button-next !hidden md:!flex !-right-16 lg:!-right-20"></div>
+            <div class="swiper-button-prev !hidden md:!flex !-left-12 lg:!-left-16"></div>
+            <div class="swiper-button-next !hidden md:!flex !-right-12 lg:!-right-16"></div>
+            
         </div>
     </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        new Swiper('.myReviewsSwiper', {
+            slidesPerView: 1,           // Жестко фиксируем 1 слайд
+            spaceBetween: 30,           // Отступ между слайдами при перелистывании
+            loop: true,                 // Бесконечная прокрутка
+            autoHeight: true,           // Автоподстройка высоты под каждый скриншот
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
