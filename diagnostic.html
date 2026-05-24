@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Экспресс-диагностика голоса — Эльвира Фазлыева</title>
+  <title>Честный чек-лист самодиагностики голоса — Эльвира Фазлыева</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,13 +12,14 @@
 
   <style>
     :root {
-      /* Синхронизировано с вашей благородной теплой палитрой */
       --bg: #fdfbf7; 
-      --card: rgba(255, 255, 255, 0.65);
-      --text: #44403c; /* Ваш фирменный темный цвет кнопки */
+      --card: rgba(255, 255, 255, 0.75);
+      --text: #44403c; 
       --accent: #755f4a; 
       --line: #e6dfd3;
-      --shadow: 0 20px 50px rgba(117, 95, 74, 0.05);
+      --shadow: 0 30px 60px rgba(117, 95, 74, 0.04);
+      --success: #6e7e65;
+      --error: #a37560;
     }
 
     * {
@@ -57,14 +58,13 @@
 
     .wrapper {
       width: 100%;
-      max-width: 840px;
+      max-width: 800px;
       margin: 0 auto;
-      padding: 60px 24px 100px;
+      padding: 40px 24px 100px;
       position: relative;
       z-index: 2;
     }
 
-    /* Кнопка возврата */
     .back-link {
       display: inline-flex;
       align-items: center;
@@ -88,93 +88,109 @@
 
     .subtitle {
       text-transform: uppercase;
-      letter-spacing: 3px;
+      letter-spacing: 4px;
       font-size: 11px;
       color: var(--accent);
-      opacity: 0.8;
-      margin-bottom: 20px;
-      font-weight: 500;
+      font-weight: 600;
+      margin-bottom: 16px;
     }
 
     h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(40px, 7vw, 72px);
-      line-height: 0.95;
-      font-weight: 400;
-      color: var(--text);
-      margin-bottom: 28px;
-    }
-
-    .hero p {
-      max-width: 580px;
-      margin: 0 auto;
-      line-height: 1.8;
-      font-size: 15px;
-      opacity: 0.85;
-    }
-
-    .card {
-      background: var(--card);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid var(--line);
-      border-radius: 32px;
-      padding: 56px;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::after {
-      content: "Для учеников Эльвиры Фазлыевой";
-      position: absolute;
-      bottom: 20px;
-      right: 28px;
-      font-size: 10px;
-      letter-spacing: 1px;
-      opacity: 0.3;
-    }
-
-    .content h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 36px;
+      font-size: clamp(38px, 6vw, 64px);
+      line-height: 1.05;
       font-weight: 400;
       color: var(--text);
       margin-bottom: 24px;
     }
 
-    .content p {
-      font-size: 15px;
-      line-height: 1.9;
+    .hero p {
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+      font-size: 16px;
+      opacity: 0.85;
+      font-weight: 300;
+    }
+
+    .intro-note {
+      background: rgba(230, 223, 211, 0.3);
+      border-radius: 20px;
+      padding: 24px;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+      border: 1px solid var(--line);
+    }
+
+    .step-card {
+      background: var(--card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+      margin-bottom: 40px;
+    }
+
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-style: italic;
+      color: var(--accent);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--text);
       margin-bottom: 20px;
     }
 
-    /* Стилизация списков самопроверки */
-    .diagnostic-list {
-      list-style: none;
-      margin: 24px 0;
-    }
-
-    .diagnostic-list li {
-      position: relative;
-      padding-left: 28px;
-      margin-bottom: 14px;
-      line-height: 1.6;
+    p {
       font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+      font-weight: 400;
     }
 
-    .diagnostic-list li::before {
-      content: "○";
-      position: absolute;
-      left: 4px;
-      color: var(--accent);
-      font-weight: bold;
+    .status-box {
+      margin: 24px 0;
+      border-radius: 20px;
+      padding: 24px;
+      font-size: 14.5px;
+      line-height: 1.75;
     }
+
+    .status-box.success {
+      background: rgba(110, 126, 101, 0.06);
+      border-left: 3px solid var(--success);
+    }
+
+    .status-box.error {
+      background: rgba(163, 117, 96, 0.06);
+      border-left: 3px solid var(--error);
+    }
+
+    .status-title {
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .status-box.success .status-title { color: var(--success); }
+    .status-box.error .status-title { color: var(--error); }
 
     .quote {
       border-left: 2px solid var(--accent);
       padding-left: 24px;
-      margin: 36px 0;
+      margin: 32px 0;
       font-family: 'Cormorant Garamond', serif;
       font-size: 20px;
       font-style: italic;
@@ -183,30 +199,82 @@
     }
 
     .divider {
-      width: 60px;
+      width: 40px;
       height: 1px;
       background: var(--line);
-      margin: 48px auto;
+      margin: 32px auto;
     }
 
-    /* Кнопка записи */
-    .cta-container {
-      text-align: center;
+    .practice-block {
+      background: #f5f0e6;
+      border-radius: 20px;
+      padding: 24px;
       margin-top: 20px;
     }
 
-    .btn-cta {
-      display: inline-flex;
+    .practice-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
       align-items: center;
-      gap: 10px;
-      background: #44403c; /* Точный цвет вашей кнопки */
+      gap: 6px;
+    }
+
+    ul, ol {
+      margin-left: 20px;
+      margin-bottom: 16px;
+    }
+
+    li {
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 8px;
+    }
+
+    .warning-card {
+      border: 1px dashed var(--error);
+      background: rgba(163, 117, 96, 0.03);
+      border-radius: 24px;
+      padding: 32px;
+      margin-top: 60px;
+      text-align: center;
+    }
+
+    .warning-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      color: var(--error);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .warning-card p {
+      font-size: 14px;
+      color: var(--text);
+      opacity: 0.9;
+      margin-bottom: 0;
+    }
+
+    .cta-container {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .btn-cta {
+      display: inline-block;
+      background: #44403c; 
       color: #ffffff;
       text-decoration: none;
-      padding: 14px 32px;
-      border-radius: 14px;
-      font-size: 14px;
+      padding: 16px 36px;
+      border-radius: 16px;
+      font-size: 15px;
       font-weight: 500;
       transition: background-color 0.2s ease, transform 0.2s ease;
+      box-shadow: 0 10px 25px rgba(68, 64, 60, 0.15);
     }
 
     .btn-cta:hover {
@@ -220,26 +288,13 @@
       font-size: 11px;
       opacity: 0.4;
       line-height: 1.8;
-      letter-spacing: 0.5px;
     }
 
     @media (max-width: 768px) {
-      .wrapper {
-        padding: 40px 16px 60px;
-      }
-
-      .card {
-        padding: 36px 20px;
-        border-radius: 24px;
-      }
-
-      .content h2 {
-        font-size: 28px;
-      }
-
-      .content p, .diagnostic-list li {
-        font-size: 14px;
-      }
+      .wrapper { padding: 32px 16px 60px; }
+      .step-card { padding: 28px 20px; border-radius: 22px; }
+      h2 { font-size: 26px; }
+      .status-box { padding: 16px; }
     }
   </style>
 </head>
@@ -252,55 +307,143 @@
     </a>
 
     <section class="hero">
-      <div class="subtitle">Бесплатный материал</div>
-      <h1>
-        Честный чек-лист<br>
-        самодиагностики
-      </h1>
+      <div class="subtitle">Практика осознанности</div>
+      <h1>Честный чек-лист<br>самодиагностики голоса</h1>
       <p>
-        Простые маркеры, которые помогут вам самостоятельно определить текущее состояние голосового аппарата, найти скрытые зажимы и наметить точки роста.
+        Бережные маркеры, которые помогут вам самостоятельно определить текущее состояние голосового аппарата, услышать скрытые зажимы и наметить точки роста.
       </p>
     </section>
 
-    <section class="card content">
-      <h2>Как звучит ваша свобода?</h2>
+    <div class="intro-note">
+      <strong>Для чего вообще эти вопросы?</strong><br>
+      По сути, это не «диагностика» в медицинском смысле, а мини-проверка того, насколько свободно сейчас работают дыхание, челюсть и язык; нет ли лишнего мышечного напряжения, которое мешает звучанию, и как тело ведёт себя в момент зарождения звука. Когда ученик приходит заниматься ко мне, это одни из первых вещей, на которые я обращаю внимание.
+    </div>
+
+    <section class="step-card">
+      <span class="step-num">Вопрос первый</span>
+      <h2>Состояние дыхания</h2>
       <p>
-        Часто на уроках мы сталкиваемся с тем, что ученики годами поют через сопротивление собственного тела, принимая дискомфорт за норму. Пройдите этот короткий тест-опрос, чтобы услышать истинные сигналы своего голоса.
+        Прямо сейчас понаблюдайте за одной важной штукой: когда вы спокойно вдыхаете — что происходит с животом и нижними рёбрами? Есть ли хоть какое-то мягкое движение или всё будто зафиксировано?
       </p>
 
-      <div class="quote">
-        «Голос — это абсолютно естественная анатомическая функция. Если петь тяжело, значит, мы где-то спорим с природой.»
+      <div class="status-box success">
+        <div class="status-title">✔ Мягкое движение есть</div>
+        Отлично. Не оценивайте, «правильно» оно выглядит или нет. У всех дыхание проявляется немного по-разному: кто-то чувствует живот, кто-то — расширение в нижних рёбрах по бокам, кто-то — лёгкое движение в пояснице. Всё это варианты нормы.
       </div>
 
-      <p><strong>Шаг 1. Проверьте себя на наличие мышечных блоков:</strong></p>
-      <ul class="diagnostic-list">
-        <li>Чувствуете ли вы першение или сухость в горле после 15–20 минут пения?</li>
-        <li>Возникает ли ощущение «выталкивания» звука на высоких нотах?</li>
-        <li>Нижняя челюсть кажется напряженной или зажатой во время быстрых пассажей?</li>
-        <li>Замечаете ли вы, что дыхания постоянно не хватает до конца фразы?</li>
-      </ul>
+      <div class="status-box error">
+        <div class="status-title">✕ Всё зажато или идет тяжело</div>
+        Если вдох дается с трудом, а живот втягивается — попробуйте не «надувать живот» специально. Это часто создаёт только лишнее напряжение в пояснице и фиксацию диафрагмы.
+      </div>
 
-      <p><strong>Шаг 2. Оцените полетность и резонанс:</strong></p>
+      <div class="practice-block">
+        <div class="practice-title">💡 Как облегчить вдох</div>
+        <p>
+          Сначала спокойно выдохните и отпустите живот, нижние рёбра, плечи, шею. А потом просто позвольте следующему вдоху произойти свободнее — словно воздух сам находит путь внутрь, без вашей помощи. Иногда уже одного наблюдения достаточно, чтобы дыхание стало мягче.
+        </p>
+      </div>
+
+      <div class="quote">
+        «Для речи и пения нам нужно не "больше воздуха", а управляемое дыхание — такое, которое легко конвертируется в поддержку голоса без излишней мышечной работы.»
+      </div>
+    </section>
+
+    <section class="step-card">
+      <span class="step-num">Вопрос второй</span>
+      <h2>Свобода челюсти</h2>
       <p>
-        Попробуйте мягко, без усилий «погудеть» сквозь сомкнутые губы на удобной ноте. Если звук ощущается плоским, глухим или сосредоточен исключительно в области горла (без приятной вибрации в губах, носу или груди), вашим резонаторам нужна бережная настройка.
+        Пока вы читаете этот текст, спросите себя: зажата ли сейчас челюсть? Стиснуты ли зубы? А плечи — не подтянуты к ушам? Сжимать зубы мы умеем виртуозно: работа, стресс и высокая концентрация дают о себе знать.
       </p>
 
-      <div class="divider"></div>
+      <div class="status-box success">
+        <div class="status-title">✔ Зубы разомкнуты</div>
+        Супер. Тогда просто проверьте: остаётся ли лицо спокойным, а язык — мягким, без лишнего напряжения. Челюсть должна оставаться живой и подвижной.
+      </div>
 
-      <div class="cta-container">
-  <p style="margin-bottom: 20px; font-style: italic; opacity: 0.9;">
-    Обнаружили хотя бы два маркера зажима? Это нормально. Давайте разберем их природу на практике.
-  </p>
-  
- <a href="index.html#contact" class="btn-cta">
-    Записаться на консультацию
-</a>
-</div>
+      <div class="status-box error">
+        <div class="status-title">✕ Челюсть стиснута</div>
+        Постоянное напряжение в этой зоне ограничивает артикуляцию, меняет ощущение свободы во рту, утомляет голос и перенапрягает шею. Помните: челюсть редко зажимается в одиночку — часто это знак того, что голова ушла вперёд.
+      </div>
+
+      <div class="practice-block">
+        <div class="practice-title">💡 Практика расслабления</div>
+        <p>
+          Не нужно срочно открывать рот «до щелчка». Просто позвольте нижней челюсти немного потяжелеть под собственным весом. Губы могут оставаться мягко сомкнутыми. Почувствуйте внутри рта чуть больше пространства — словно языку стало просторнее. 
+        </p>
+        <p>
+          Можно сделать пару спокойных выдохов через губы или слегка надуть щёки, чтобы снять лишнюю фиксацию лица. 
+        </p>
+      </div>
     </section>
+
+    <section class="step-card">
+      <span class="step-num">Вопрос третий</span>
+      <h2>Подвижность языка</h2>
+      <p>
+        Задача посложнее: попробуем почувствовать язык. Вот прямо сейчас: он лежит во рту спокойно или будто напряжён, подтянут назад, излишне «собран»?
+      </p>
+
+      <div class="status-box success">
+        <div class="status-title">✔ Язык лежит спокойно</div>
+        Отлично. Обратите внимание: не упирается ли кончик слишком сильно в зубы, не напряжена ли задняя часть у корня, нет ли ощущения «комка» в горле. Мы ищем вариативность и свободу.
+      </div>
+
+      <div class="status-box error">
+        <div class="status-title">✕ Корень подтянут назад или напряжен</div>
+        У многих язык напряжён постоянно, и мозг перестаёт это замечать. Иногда корень языка уходит назад и крадет свободу звука, компенсируя нехватку дыхательной поддержки или зажим в шее.
+      </div>
+
+      <div class="practice-block">
+        <div class="practice-title">💡 Возвращаем чувствительность</div>
+        <ul>
+          <li>Слегка пожевать или очень мягко покусать язык от кончика ближе к середине, без фанатизма;</li>
+          <li>Аккуратно вытянуть язык вперёд на несколько секунд, а затем полностью расслабить;</li>
+          <li>Поделать медленные круговые движения языком внутри рта, словно он разминается.</li>
+        </ul>
+        <div class="divider"></div>
+        <p style="font-size: 14px; font-style: italic; margin-bottom: 0;">
+          <strong>Тест с зеркалом:</strong> Подойдите к зеркалу, откройте рот и посмотрите на язык. А теперь произнесите что-то простое (например, «мама мыла раму») и заметьте: не утягивается ли корень назад в момент звука?
+        </p>
+      </div>
+    </section>
+
+    <section class="step-card">
+      <span class="step-num">Вопрос четвертый</span>
+      <h2>Комплексный тест под звуком</h2>
+      <p>
+        В покое всё может выглядеть идеально. Но как только появляется звук — тело начинает «помогать» привычными компенсациями.
+      </p>
+      <p>
+        Возьмите комфортную ноту — просто мягкое <strong>«м-м-м»</strong> на средней высоте, как будто вы задумались. И пока звучите, мягко проследите за одним из пунктов:
+      </p>
+      
+      <ol>
+        <li>Дыхание идёт свободно или вы «поджимаете» и подталкиваете воздух?</li>
+        <li>Челюсть остаётся тяжёлой или зубы рефлекторно сжимаются на звуке?</li>
+        <li>Язык мягкий или тянется назад, сужая пространство во рту?</li>
+      </ol>
+
+      <div class="quote">
+        «Голос не любит гиперконтроль. Если одновременно следить за дыханием, держать язык и расслаблять плечи, тело зажмется ещё сильнее. Осознавание — это не контроль. Достаточно просто заметить связь.»
+      </div>
+    </section>
+
+    <div class="warning-card">
+      <h4>Важное примечание</h4>
+      <p>
+        Помните: регулярная хрипота, длительная потеря диапазона, быстрая утомляемость или боль при звучании — это не просто «напряжение», которое можно убрать упражнениями. Это весомый повод обратиться к врачу-ЛОРу и фонопеду. Экспресс-практики работают с функцией здорового аппарата, а не с органической патологией.
+      </p>
+    </div>
+
+    <div class="cta-container">
+      <a href="index.html#contact" class="btn-cta">
+        Записаться на консультацию
+      </a>
+    </div>
 
     <div class="footer-note">
       © Эльвира Фазлыева · Авторский методический материал <br>
-      Копирование и коммерческое распространение защищено авторским правом
+      Слушайте себя — и звучите свободно.
     </div>
 
   </div>
