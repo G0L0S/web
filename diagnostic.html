@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Экспресс-диагностика голоса — Эльвира Фазлыева</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <style>
+    :root {
+      /* Синхронизировано с вашей благородной теплой палитрой */
+      --bg: #fdfbf7; 
+      --card: rgba(255, 255, 255, 0.65);
+      --text: #44403c; /* Ваш фирменный темный цвет кнопки */
+      --accent: #755f4a; 
+      --line: #e6dfd3;
+      --shadow: 0 20px 50px rgba(117, 95, 74, 0.05);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Manrope', sans-serif;
+      min-height: 100vh;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "DIAGNOSTIC";
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9vw;
+      letter-spacing: 16px;
+      color: rgba(117, 95, 74, 0.02);
+      pointer-events: none;
+      z-index: 0;
+      transform: rotate(-15deg);
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Кнопка возврата */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      opacity: 0.6;
+      transition: opacity 0.2s ease;
+      margin-bottom: 40px;
+    }
+
+    .back-link:hover {
+      opacity: 1;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .subtitle {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 11px;
+      color: var(--accent);
+      opacity: 0.8;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(40px, 7vw, 72px);
+      line-height: 0.95;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+
+    .hero p {
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.8;
+      font-size: 15px;
+      opacity: 0.85;
+    }
+
+    .card {
+      background: var(--card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      padding: 56px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: "Для учеников Эльвиры Фазлыевой";
+      position: absolute;
+      bottom: 20px;
+      right: 28px;
+      font-size: 10px;
+      letter-spacing: 1px;
+      opacity: 0.3;
+    }
+
+    .content h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .content p {
+      font-size: 15px;
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    /* Стилизация списков самопроверки */
+    .diagnostic-list {
+      list-style: none;
+      margin: 24px 0;
+    }
+
+    .diagnostic-list li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 14px;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .diagnostic-list li::before {
+      content: "○";
+      position: absolute;
+      left: 4px;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .quote {
+      border-left: 2px solid var(--accent);
+      padding-left: 24px;
+      margin: 36px 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-style: italic;
+      color: var(--accent);
+      line-height: 1.6;
+    }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: var(--line);
+      margin: 48px auto;
+    }
+
+    /* Кнопка записи */
+    .cta-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #44403c; /* Точный цвет вашей кнопки */
+      color: #ffffff;
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn-cta:hover {
+      background: #57524e;
+      transform: translateY(-1px);
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 11px;
+      opacity: 0.4;
+      line-height: 1.8;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 768px) {
+      .wrapper {
+        padding: 40px 16px 60px;
+      }
+
+      .card {
+        padding: 36px 20px;
+        border-radius: 24px;
+      }
+
+      .content h2 {
+        font-size: 28px;
+      }
+
+      .content p, .diagnostic-list li {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <a href="index.html" class="back-link">
+      <i class="ph ph-arrow-left"></i> На главную страницу
+    </a>
+
+    <section class="hero">
+      <div class="subtitle">Бесплатный материал</div>
+      <h1>
+        Честный чек-лист<br>
+        самодиагностики
+      </h1>
+      <p>
+        Простые маркеры, которые помогут вам самостоятельно определить текущее состояние голосового аппарата, найти скрытые зажимы и наметить точки роста.
+      </p>
+    </section>
+
+    <section class="card content">
+      <h2>Как звучит ваша свобода?</h2>
+      <p>
+        Часто на уроках мы сталкиваемся с тем, что ученики годами поют через сопротивление собственного тела, принимая дискомфорт за норму. Пройдите этот короткий тест-опрос, чтобы услышать истинные сигналы своего голоса.
+      </p>
+
+      <div class="quote">
+        «Голос — это абсолютно естественная анатомическая функция. Если петь тяжело, значит, мы где-то спорим с природой.»
+      </div>
+
+      <p><strong>Шаг 1. Проверьте себя на наличие мышечных блоков:</strong></p>
+      <ul class="diagnostic-list">
+        <li>Чувствуете ли вы першение или сухость в горле после 15–20 минут пения?</li>
+        <li>Возникает ли ощущение «выталкивания» звука на высоких нотах?</li>
+        <li>Нижняя челюсть кажется напряженной или зажатой во время быстрых пассажей?</li>
+        <li>Замечаете ли вы, что дыхания постоянно не хватает до конца фразы?</li>
+      </ul>
+
+      <p><strong>Шаг 2. Оцените полетность и резонанс:</strong></p>
+      <p>
+        Попробуйте мягко, без усилий «погудеть» сквозь сомкнутые губы на удобной ноте. Если звук ощущается плоским, глухим или сосредоточен исключительно в области горла (без приятной вибрации в губах, носу или груди), вашим резонаторам нужна бережная настройка.
+      </p>
+
+      <div class="divider"></div>
+
+      <div class="cta-container">
+        <p style="margin-bottom: 20px; font-style: italic; opacity: 0.9;">
+          Обнаружили хотя бы два маркера зажима? Это нормально. Давайте разберем их природу на практике.
+        </p>
+        <a href="index.html#contacts" class="btn-cta">
+          <i class="ph ph-calendar-blank"></i> Записаться на экспресс-консультацию
+        </a>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      © Эльвира Фазлыева · Авторский методический материал <br>
+      Копирование и коммерческое распространение защищено авторским правом
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    document.addEventListener('keydown', function(event) {
+      if (
+        (event.ctrlKey || event.metaKey) &&
+        ['c', 'u', 's', 'a', 'p'].includes(event.key.toLowerCase())
+      ) {
+        event.preventDefault();
+      }
+
+      if (event.key === 'PrintScreen') {
+        navigator.clipboard.writeText('');
+      }
+    });
+
+    document.addEventListener('dragstart', event => event.preventDefault());
+  </script>
+
+</body>
+</html>
