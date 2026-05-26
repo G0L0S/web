@@ -1,4 +1,3 @@
-// ВСТАВИТЬ В ФАЙЛ src/main.js ПОСЛЕ ПОЛНОЙ ОЧИСТКИ ФАЙЛА
 import { submitForm } from './telegram.js';
 
 // Делаем отправку формы доступной глобально
@@ -54,12 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================================================
-    // 4. МОДАЛЬНОЕ ОКНО ДЛЯ ЗАПИСИ (Консультация и Тренинги)
+    // 4. МОДАЛЬНОЕ ОКНО ДЛЯ ЗАПИСИ
     // =========================================================================
     const modal = document.getElementById('callback-modal'); 
     const closeModalBtns = document.querySelectorAll('.close-modal-btn');
-    
-    // Ищем кнопки по селекторам на сайте
     const openModalBtns = document.querySelectorAll([
         '[href="#modal"]', 
         '.btn-record', 
@@ -73,13 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.classList.remove('hidden');
             modal.classList.add('flex');
             document.body.style.overflow = 'hidden';
-        } else {
-            alert('Здесь открывается окно обратной связи для записи!');
         }
-    };
-
-    window.toggleContactModal = function(show) {
-        if (show) window.openContactModal();
     };
 
     function closeModal() {
@@ -97,15 +88,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === modal) closeModal();
     });
 
-
     // =========================================================================
-    // 5. СОВРЕМЕННЫЙ АВТОНОМНЫЙ LIGHTBOX ДЛЯ ПРОСМОТРА ДИПЛОМОВ
+    // 5. АВТОНОМНЫЙ LIGHTBOX ДЛЯ ПРОСМОТРА ДИПЛОМОВ
     // =========================================================================
-    const triggers = document.querySelectorAll('.lightbox-trigger, .view-diploma-link');
+    const triggers = document.querySelectorAll('.lightbox-trigger');
     let lightboxModal = null;
     let lightboxImg = null;
 
-    // Функция создания модального окна динамически (без привязки к HTML)
     function createLightbox() {
         lightboxModal = document.createElement('div');
         lightboxModal.className = 'fixed inset-0 bg-stone-950/95 flex items-center justify-center z-50 opacity-0 transition-opacity duration-300 pointer-events-none';
@@ -117,7 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
         lightboxImg = document.createElement('img');
         lightboxImg.className = 'max-w-full max-h-[85vh] object-contain transform scale-95 transition-transform duration-300 select-none rounded-lg shadow-2xl';
         
-        // Защита от случайного скачивания и перетаскивания картинок
         lightboxImg.addEventListener('contextmenu', e => e.preventDefault());
         lightboxImg.addEventListener('dragstart', e => e.preventDefault());
 
@@ -125,66 +113,47 @@ document.addEventListener('DOMContentLoaded', () => {
         lightboxModal.appendChild(lightboxImg);
         document.body.appendChild(lightboxModal);
 
-        // Закрытие при клике по фону или крестику
         lightboxModal.addEventListener('click', (e) => {
-            if (e.target === lightboxModal || e.target === closeBtn) {
-                closeLightbox();
-            }
+            if (e.target === lightboxModal || e.target === closeBtn) closeLightbox();
         });
 
-        // Закрытие по кнопке Escape
         window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && lightboxModal.classList.contains('opacity-100')) {
-                closeLightbox();
-            }
+            if (e.key === 'Escape' && lightboxModal.classList.contains('opacity-100')) closeLightbox();
         });
     }
 
-    function openLightbox(src, alt = 'Документ об образовании') {
+    function openLightbox(src, alt) {
         if (!lightboxModal) createLightbox();
-        
         lightboxImg.src = src;
-        lightboxImg.alt = alt;
-        
+        lightboxImg.alt = alt || 'Документ об образовании';
         document.body.style.overflow = 'hidden';
-        
         lightboxModal.classList.remove('pointer-events-none', 'opacity-0');
         lightboxModal.classList.add('opacity-100');
-        
-        // Микротаймаут для срабатывания плавной анимации увеличения
         setTimeout(() => lightboxImg.classList.remove('scale-95'), 10);
     }
 
     function closeLightbox() {
         if (!lightboxModal) return;
-        
         lightboxModal.classList.remove('opacity-100');
         lightboxModal.classList.add('opacity-0', 'pointer-events-none');
         lightboxImg.classList.add('scale-95');
-        
         setTimeout(() => {
             document.body.style.overflow = '';
             if (lightboxImg) lightboxImg.src = '';
         }, 300);
     }
 
-    // Вешаем глобальные методы на случай, если вызов идет из инлайна
-    window.openLightbox = (src) => openLightbox(src);
-    window.closeLightbox = () => closeLightbox();
-
-    // Привязываем клик ко всем миниатюрам на странице
     triggers.forEach(element => {
         element.addEventListener('click', (e) => {
             e.preventDefault();
             const src = element.getAttribute('src') || element.getAttribute('href') || element.dataset.src;
-            const alt = element.getAttribute('alt') || 'Документ';
+            const alt = element.getAttribute('alt');
             if (src) openLightbox(src, alt);
         });
     });
 
-
     // =========================================================================
-    // 6. ОЧИЩЕННЫЙ НАТИВНЫЙ СЛАЙДЕР ОТЗЫВОВ
+    // 6. СЛАЙДЕР ОТЗЫВОВ
     // =========================================================================
     const track = document.getElementById('reviews-track') || document.getElementById('reviewTrack');
     const slides = track ? Array.from(track.children) : [];
@@ -231,10 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         }
-
-        window.moveSlide = function(direction) {
-            goToSlide(currentIndex + direction);
-        };
 
         prevBtn?.addEventListener('click', () => goToSlide(currentIndex - 1));
         nextBtn?.addEventListener('click', () => goToSlide(currentIndex + 1));
