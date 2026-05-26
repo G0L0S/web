@@ -98,3 +98,50 @@ window.toggleContactModal = function(show) {
     alert('Здесь будет открываться модальное окно обратной связи для записи на тренинги!');
   }
 };
+// КЛИК-ЭФФЕКТ ДЛЯ ПРОСМОТРА ДИПЛОМОВ (LIGHTBOX)
+document.addEventListener('DOMContentLoaded', () => {
+    const lightbox = document.getElementById('diploma-lightbox');
+    const lightboxImg = document.getElementById('lightbox-target-img');
+    const closeBtn = document.getElementById('close-lightbox');
+    const triggers = document.querySelectorAll('.lightbox-trigger');
+
+    // Открытие лайтбокса при клике на картинку
+    triggers.forEach(img => {
+        img.addEventListener('click', (e) => {
+            e.preventDefault();
+            const src = img.getAttribute('src');
+            if (lightbox && lightboxImg) {
+                lightboxImg.src = src;
+                lightbox.classList.remove('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = 'hidden'; // Отключаем прокрутку страницы
+            }
+        });
+    });
+
+    // Функция закрытия окна
+    function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.add('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = ''; // Возвращаем прокрутку страницы
+        setTimeout(() => {
+            if (lightboxImg) lightboxImg.src = ''; // Очищаем адрес после скрытия
+        }, 300);
+    }
+
+    // Закрытие по крестику
+    closeBtn?.addEventListener('click', closeLightbox);
+
+    // Закрытие по клику на темную область вокруг картинки
+    lightbox?.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    // Закрытие по кнопке Escape на клавиатуре
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeLightbox();
+        }
+    });
+});
