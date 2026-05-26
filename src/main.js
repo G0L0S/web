@@ -145,3 +145,81 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+// НАТИВНЫЙ АДАПТИВНЫЙ СЛАЙДЕР ОТЗЫВОВ
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('reviews-track');
+    const slides = track ? track.children : [];
+    const dotsContainer = document.getElementById('reviews-dots');
+    const prevBtn = document.getElementById('review-prev');
+    const nextBtn = document.getElementById('review-next');
+    
+    if (!track || slides.length === 0) return;
+
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+
+    // 1. Динамически создаем точки-индикаторы
+    for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('button');
+        dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${i === 0 ? 'bg-warm-600 w-6' : 'bg-warm-300 hover:bg-warm-400'}`;
+        dot.setAttribute('aria-label', `Перейти к отзыву ${i + 1}`);
+        dot.addEventListener('click', () => {
+            goToSlide(i);
+        });
+        dotsContainer.appendChild(dot);
+    }
+
+    const dots = dotsContainer.children;
+
+    // 2. Функция перехода к нужному слайду
+    function goToSlide(index) {
+        // Зацикливание слайдера
+        if (index < 0) {
+            currentIndex = totalSlides - 1;
+        } else if (index >= totalSlides) {
+            currentIndex = 0;
+        } else {
+            currentIndex = index;
+        }
+
+        // Плавное смещение по оси X
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+        // Обновление стилей активной точки
+        Array.from(dots).forEach((dot, i) => {
+            if (i === currentIndex) {
+                dot.classList.remove('bg-warm-300', 'w-2.5');
+                dot.classList.add('bg-warm-600', 'w-6');
+            } else {
+                dot.classList.remove('bg-warm-600', 'w-6');
+                dot.classList.add('bg-warm-300', 'w-2.5');
+            }
+        });
+    }
+
+    // 3. Обработчики клика на стрелки
+    prevBtn?.addEventListener('click', () => goToSlide(currentIndex - 1));
+    nextBtn?.addEventListener('click', () => goToSlide(currentIndex + 1));
+
+    // 4. Поддержка свайпов для мобильных экранов (Touch события)
+    let startX = 0;
+    let endX = 0;
+
+    track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+        endX = e.changedTouches[0].clientX;
+        handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+        const swipeThreshold = 50; // чувствительность свайпа в пикселях
+        if (startX - endX > swipeThreshold) {
+            goToSlide(currentIndex + 1); // Свайп влево -> следующий
+        } else if (endX - startX > swipeThreshold) {
+            goToSlide(currentIndex - 1); // Свайп вправо -> предыдущий
+        }
+    }
+});
