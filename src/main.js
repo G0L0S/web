@@ -99,52 +99,87 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // =========================================================================
-    // 5. ПРОСМОТР ДИПЛОМОВ (Lightbox)
+    // 5. СОВРЕМЕННЫЙ АВТОНОМНЫЙ LIGHTBOX ДЛЯ ПРОСМОТРА ДИПЛОМОВ
     // =========================================================================
-    const lightbox = document.getElementById('diploma-lightbox') || document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-target-img') || document.getElementById('lightboxImg');
-    const closeBtn = document.getElementById('close-lightbox');
     const triggers = document.querySelectorAll('.lightbox-trigger, .view-diploma-link');
+    let lightboxModal = null;
+    let lightboxImg = null;
+
+    // Функция создания модального окна динамически (без привязки к HTML)
+    function createLightbox() {
+        lightboxModal = document.createElement('div');
+        lightboxModal.className = 'fixed inset-0 bg-stone-950/95 flex items-center justify-center z-50 opacity-0 transition-opacity duration-300 pointer-events-none';
+        
+        const closeBtn = document.createElement('button');
+        closeBtn.innerHTML = '&times;';
+        closeBtn.className = 'absolute top-6 right-6 text-white text-4xl font-light hover:text-warm-300 transition-colors cursor-pointer focus:outline-none select-none';
+        
+        lightboxImg = document.createElement('img');
+        lightboxImg.className = 'max-w-full max-h-[85vh] object-contain transform scale-95 transition-transform duration-300 select-none rounded-lg shadow-2xl';
+        
+        // Защита от случайного скачивания и перетаскивания картинок
+        lightboxImg.addEventListener('contextmenu', e => e.preventDefault());
+        lightboxImg.addEventListener('dragstart', e => e.preventDefault());
+
+        lightboxModal.appendChild(closeBtn);
+        lightboxModal.appendChild(lightboxImg);
+        document.body.appendChild(lightboxModal);
+
+        // Закрытие при клике по фону или крестику
+        lightboxModal.addEventListener('click', (e) => {
+            if (e.target === lightboxModal || e.target === closeBtn) {
+                closeLightbox();
+            }
+        });
+
+        // Закрытие по кнопке Escape
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightboxModal.classList.contains('opacity-100')) {
+                closeLightbox();
+            }
+        });
+    }
+
+    function openLightbox(src, alt = 'Документ об образовании') {
+        if (!lightboxModal) createLightbox();
+        
+        lightboxImg.src = src;
+        lightboxImg.alt = alt;
+        
+        document.body.style.overflow = 'hidden';
+        
+        lightboxModal.classList.remove('pointer-events-none', 'opacity-0');
+        lightboxModal.classList.add('opacity-100');
+        
+        // Микротаймаут для срабатывания плавной анимации увеличения
+        setTimeout(() => lightboxImg.classList.remove('scale-95'), 10);
+    }
 
     function closeLightbox() {
-        if (!lightbox) return;
-        lightbox.classList.add('opacity-0', 'pointer-events-none', 'hidden');
-        document.body.style.overflow = ''; 
-        document.body.classList.remove('overflow-hidden');
+        if (!lightboxModal) return;
+        
+        lightboxModal.classList.remove('opacity-100');
+        lightboxModal.classList.add('opacity-0', 'pointer-events-none');
+        lightboxImg.classList.add('scale-95');
+        
         setTimeout(() => {
-            if (lightboxImg) lightboxImg.src = ''; 
+            document.body.style.overflow = '';
+            if (lightboxImg) lightboxImg.src = '';
         }, 300);
     }
 
-    window.openLightbox = function(src) {
-        if (lightbox && lightboxImg) {
-            lightboxImg.src = src;
-            lightbox.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
-            lightbox.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        }
-    };
+    // Вешаем глобальные методы на случай, если вызов идет из инлайна
+    window.openLightbox = (src) => openLightbox(src);
+    window.closeLightbox = () => closeLightbox();
 
-    window.closeLightbox = closeLightbox;
-
+    // Привязываем клик ко всем миниатюрам на странице
     triggers.forEach(element => {
         element.addEventListener('click', (e) => {
             e.preventDefault();
             const src = element.getAttribute('src') || element.getAttribute('href') || element.dataset.src;
-            if (src) window.openLightbox(src);
+            const alt = element.getAttribute('alt') || 'Документ';
+            if (src) openLightbox(src, alt);
         });
-    });
-
-    closeBtn?.addEventListener('click', closeLightbox);
-    
-    lightbox?.addEventListener('click', (e) => {
-        if (e.target === lightbox || e.target.classList.contains('bg-black/80') || e.target.id === 'diploma-lightbox') {
-            closeLightbox();
-        }
-    });
-
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeLightbox();
     });
 
 
