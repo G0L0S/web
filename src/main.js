@@ -1,3 +1,4 @@
+// ВСТАВИТЬ В ФАЙЛ src/main.js ПОСЛЕ ПОЛНОЙ ОЧИСТКИ ФАЙЛА
 import { submitForm } from './telegram.js';
 
 // Делаем отправку формы доступной глобально
@@ -55,11 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     // 4. МОДАЛЬНОЕ ОКНО ДЛЯ ЗАПИСИ (Консультация и Тренинги)
     // =========================================================================
-    // Код находит форму по ID "callback-modal" и открывает её при клике на нужные кнопки
     const modal = document.getElementById('callback-modal'); 
     const closeModalBtns = document.querySelectorAll('.close-modal-btn');
     
-    // Ищем все кнопки записи на сайте (включая ссылки и кнопки тренингов)
+    // Ищем кнопки по селекторам на сайте
     const openModalBtns = document.querySelectorAll([
         '[href="#modal"]', 
         '.btn-record', 
@@ -67,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
         'button[class*="consultation"]'
     ].join(','));
 
-    // Функция открытия
     window.openContactModal = function(e) {
         if (e && typeof e.preventDefault === 'function') e.preventDefault();
         if (modal) {
@@ -75,12 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.classList.add('flex');
             document.body.style.overflow = 'hidden';
         } else {
-            // Если модалки с таким ID в HTML ещё нет, сработает запасной вариант
             alert('Здесь открывается окно обратной связи для записи!');
         }
     };
 
-    // Алиас для старой функции тренингов, чтобы ничего не падало
     window.toggleContactModal = function(show) {
         if (show) window.openContactModal();
     };
@@ -93,18 +90,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Навешиваем обработчики на кнопки
     openModalBtns.forEach(btn => btn.addEventListener('click', window.openContactModal));
     closeModalBtns.forEach(btn => btn.addEventListener('click', closeModal));
 
-    // Дополнительно: закрытие модалки при клике на затемнение вокруг неё
     modal?.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
     });
 
 
     // =========================================================================
-    // 5. ПРОСМОТР ДИПЛОМОВ (Lightbox) — Исправлено под мобильные и ПК
+    // 5. ПРОСМОТР ДИПЛОМОВ (Lightbox)
     // =========================================================================
     const lightbox = document.getElementById('diploma-lightbox') || document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-target-img') || document.getElementById('lightboxImg');
@@ -121,7 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     }
 
-    // Глобальная функция для старых инлайн-вызовов (onclick="openLightbox(...)")
     window.openLightbox = function(src) {
         if (lightbox && lightboxImg) {
             lightboxImg.src = src;
@@ -133,11 +127,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.closeLightbox = closeLightbox;
 
-    // Обработка кликов по триггерам документов (ссылки и превью картинок)
     triggers.forEach(element => {
         element.addEventListener('click', (e) => {
             e.preventDefault();
-            // Ищем путь к картинке в src, href или data-атрибутах
             const src = element.getAttribute('src') || element.getAttribute('href') || element.dataset.src;
             if (src) window.openLightbox(src);
         });
@@ -145,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     closeBtn?.addEventListener('click', closeLightbox);
     
-    // Закрытие по клику на темную область фона
     lightbox?.addEventListener('click', (e) => {
         if (e.target === lightbox || e.target.classList.contains('bg-black/80') || e.target.id === 'diploma-lightbox') {
             closeLightbox();
@@ -160,7 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     // 6. ОЧИЩЕННЫЙ НАТИВНЫЙ СЛАЙДЕР ОТЗЫВОВ
     // =========================================================================
-    // Скрипт автоматически поддерживает оба варианта ID: 'reviews-track' и старый 'reviewTrack'
     const track = document.getElementById('reviews-track') || document.getElementById('reviewTrack');
     const slides = track ? Array.from(track.children) : [];
     const dotsContainer = document.getElementById('reviews-dots');
@@ -171,10 +161,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentIndex = 0;
         const totalSlides = slides.length;
 
-        // Очищаем точки (чтобы они не дублировались при перезагрузках сборщика)
         if (dotsContainer) dotsContainer.innerHTML = '';
 
-        // Генерируем новые аккуратные точки пагинации
         for (let i = 0; i < totalSlides; i++) {
             const dot = document.createElement('button');
             dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${i === 0 ? 'bg-warm-600 w-6' : 'bg-warm-300 hover:bg-warm-400'}`;
@@ -194,10 +182,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentIndex = index;
             }
 
-            // Сдвигаем ленту отзывов
             track.style.transform = `translateX(-${currentIndex * 100}%)`;
 
-            // Меняем размер и цвет активной точки
             if (dots.length > 0) {
                 Array.from(dots).forEach((dot, i) => {
                     if (i === currentIndex) {
@@ -211,7 +197,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Глобальный метод переключения (для совместимости)
         window.moveSlide = function(direction) {
             goToSlide(currentIndex + direction);
         };
@@ -219,7 +204,6 @@ document.addEventListener('DOMContentLoaded', () => {
         prevBtn?.addEventListener('click', () => goToSlide(currentIndex - 1));
         nextBtn?.addEventListener('click', () => goToSlide(currentIndex + 1));
 
-        // Мобильные свайпы на отзывах
         let touchStartX = 0;
         let touchEndX = 0;
 
@@ -231,9 +215,9 @@ document.addEventListener('DOMContentLoaded', () => {
             touchEndX = e.changedTouches[0].clientX;
             const swipeThreshold = 50;
             if (touchStartX - touchEndX > swipeThreshold) {
-                goToSlide(currentIndex + 1); // Свайп влево -> следующий
+                goToSlide(currentIndex + 1);
             } else if (touchEndX - touchStartX > swipeThreshold) {
-                goToSlide(currentIndex - 1); // Свайп вправо -> предыдущий
+                goToSlide(currentIndex - 1);
             }
         }, { passive: true });
     }
