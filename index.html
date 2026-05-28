@@ -582,6 +582,40 @@
 </section>
 
 <!-- СЕКЦИЯ: ОТЗЫВЫ -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<style>
+    /* Фиксация слайдера строго на 1 слайд */
+    .reviews-section .swiper-slide {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        box-sizing: border-box;
+    }
+    .reviews-section .swiper-slide-active {
+        opacity: 1;
+    }
+    /* Тонкие стрелки warm-800 */
+    .reviews-section .swiper-button-next::after, 
+    .reviews-section .swiper-button-prev::after {
+        font-size: 24px !important;
+        color: #44403c !important;
+        font-weight: 300;
+    }
+    /* Пагинация строго ПОД карточкой */
+    .reviews-section .swiper-pagination {
+        position: relative !important;
+        margin-top: 32px !important;
+        bottom: 0 !important;
+    }
+    .reviews-section .swiper-pagination-bullet-active {
+        background: #44403c !important;
+    }
+</style>
+
 <section id="reviews" class="py-20 bg-warm-50 overflow-hidden reviews-section">
     <div class="max-w-6xl mx-auto px-6">
         
@@ -589,248 +623,196 @@
             Отзывы учеников
         </h2>
         
-        <div class="relative max-w-[650px] mx-auto" data-aos="fade-up">
-            
-            <!-- Окно слайдера (Viewport) -->
-            <div class="overflow-hidden relative unique-slider-viewport rounded-[2rem]">
-                <div id="reviews-track" class="flex transition-transform duration-500 ease-out will-change-transform">
+        <div class="relative max-w-[600px] mx-auto" data-aos="fade-up">
+            <div class="swiper myReviewsSwiper">
+                <div class="swiper-wrapper">
                     
-                    <!-- Отзыв 1 (Практикующий психолог) -->
-                    <div class="w-full flex-shrink-0 px-2 flex flex-col justify-between">
-                        <!-- Наверху: Описание проделанной работы -->
-                        <div class="text-center mb-4">
-                            <span class="inline-block bg-stone-100 text-stone-700 text-xs md:text-sm px-4 py-1.5 rounded-full font-medium shadow-sm border border-stone-200/50">
-                                Развитие вокальной уверенности и преодоление зажимов
-                            </span>
-                        </div>
-                        
-                        <!-- Кавычка -->
+                    <div class="swiper-slide">
+                        <p class="mb-2 text-base md:text-lg font-medium text-warm-600 text-center tracking-[0.2em] uppercase">
+                            Практикующий психолог
+                        </p>
                         <div class="text-6xl font-serif text-warm-300 leading-none mb-1 text-center select-none">“</div>
-                        
-                        <!-- Карточка с текстом -->
-                        <div class="bg-white p-6 md:p-8 rounded-[2rem] border border-warm-200 shadow-sm w-full text-center flex flex-col justify-between flex-grow min-h-[340px]">
+                        <div class="bg-white p-6 md:p-8 rounded-[2rem] border border-warm-200 shadow-sm w-full text-center flex flex-col justify-between min-h-[320px]">
                             <div class="flex-grow flex flex-col justify-center">
-                                <p class="text-warm-800 text-sm md:text-base italic leading-relaxed mb-4">
+                                <p class="text-warm-800 text-sm md:text-base italic leading-relaxed mb-2">
                                     Я пришла к Эльвире с запросом узнать, могу ли я в принципе петь. Не в душе, не в темном подвале, а так, чтобы не стесняться, что кто-то меня может услышать ). <br><br>
-                                    Благодаря Эльвире я узнала, что у меня есть голос. Я узнала, что он может красиво звучать, что его <span class="font-semibold text-stone-900">диапазон и сила гораздо больше, чем я думала</span>. Самое сложное было – <span class="font-semibold text-stone-900">перестать стесняться</span>. Эльвира не только профессиональный педагог, она и тонкий психолог, который умеет внушить веру в себя, желание тренироваться и стараться быть лучше. <br><br>
+                                    Благодаря Эльвире я узнала, что у меня есть голос. Я узнала, что он может красиво звучать, что его диапазон и сила гораздо больше, чем я думала. Самое сложное было – перестать стесняться. Эльвира не только профессиональный педагог, она и тонкий психолог, который умеет внушить веру в себя, желание тренироваться и стараться быть лучше. <br><br>
                                     Главная задача, которую я ставила перед собой – это услышать себя, полюбить свой голос и поверить в то, что я могу петь. <br><br>
                                     Я считаю, что с поставленной задачей мы прекрасно справились. <br><br>
                                     Любовь к пению, которую я питала с детства, теперь подкреплена умениями и уверенностью в своих способностях.
                                 </p>
                             </div>
+                            <span class="text-xs font-normal uppercase tracking-wider text-warm-600 block border-t border-warm-100 pt-4 mt-4">
+                                Развитие вокальной уверенности и преодоление зажимов
+                            </span>
                         </div>
-                        
-                        <!-- Внизу: Профессия / Автор -->
-                        <p class="mt-4 text-sm md:text-base font-semibold text-warm-700 text-center tracking-[0.15em] uppercase">
-                            — Практикующий психолог
-                        </p>
                     </div>
 
-                    <!-- Отзыв 2 (Преподаватель в школе) -->
-                    <div class="w-full flex-shrink-0 px-2 flex flex-col justify-between">
-                        <!-- Наверху: Описание проделанной работы -->
-                        <div class="text-center mb-4">
-                            <span class="inline-block bg-stone-100 text-stone-700 text-xs md:text-sm px-4 py-1.5 rounded-full font-medium shadow-sm border border-stone-200/50">
+                    <div class="swiper-slide">
+                        <p class="mb-2 text-base md:text-lg font-medium text-warm-600 text-center tracking-[0.2em] uppercase">
+                            Преподаватель в школе
+                        </p>
+                        <div class="text-6xl font-serif text-warm-300 leading-none mb-1 text-center select-none">“</div>
+                        <div class="bg-white p-6 md:p-8 rounded-[2rem] border border-warm-200 shadow-sm w-full text-center flex flex-col justify-between min-h-[350px]">
+                            <div class="flex-grow flex flex-col justify-center">
+                                <p class="text-warm-800 text-sm md:text-base italic leading-relaxed mb-6">
+                                    Я очень рада, что нашла такого учителя по вокалу, как ты! У тебя сильный, красивый голос, очень мотивируешь и, самое главное, хотелось поблагодарить за располагающую теплую атмосферу на уроках, доброе отношение и за то, что вселяешь веру в то, что все получится! И голос мой раскрыла и оптимизму научила)) Идеальный учитель, по-моему, очень крутая!
+                                </p>
+                            </div>
+                            <span class="text-xs font-normal uppercase tracking-wider text-warm-600 block border-t border-warm-100 pt-4">
                                 Работа с тремором в голосе и зажимом мышц гортани
                             </span>
                         </div>
-                        
-                        <div class="text-6xl font-serif text-warm-300 leading-none mb-1 text-center select-none">“</div>
-                        
-                        <div class="bg-white p-6 md:p-8 rounded-[2rem] border border-warm-200 shadow-sm w-full text-center flex flex-col justify-between flex-grow min-h-[340px]">
-                            <div class="flex-grow flex flex-col justify-center">
-                                <p class="text-warm-800 text-sm md:text-base italic leading-relaxed mb-4">
-                                    Я очень рада, что нашла такого учителя по вокалу, как ты! У тебя сильный, красивый голос, очень мотивируешь и, самое главное, хотелось поблагодарить за располагающую теплую атмосферу на уроках, доброе отношение и за то, что вселяешь веру в то, что все получится! И <span class="font-semibold text-stone-900">голос мой раскрыла</span> и оптимизму научила)) Идеальный учитель, по-моему, очень крутая!
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <!-- Внизу: Профессия / Автор -->
-                        <p class="mt-4 text-sm md:text-base font-semibold text-warm-700 text-center tracking-[0.15em] uppercase">
-                            — Преподаватель в школе
-                        </p>
                     </div>
 
-                    <!-- Отзыв 3 (Репетитор по английскому) -->
-                    <div class="w-full flex-shrink-0 px-2 flex flex-col justify-between">
-                        <!-- Наверху: Описание проделанной работы -->
-                        <div class="text-center mb-4">
-                            <span class="inline-block bg-stone-100 text-stone-700 text-xs md:text-sm px-4 py-1.5 rounded-full font-medium shadow-sm border border-stone-200/50">
-                                Развитие вокальной уверенности и раскрытие возможностей голоса
-                            </span>
-                        </div>
-                        
+                    <div class="swiper-slide">
+                        <p class="mb-2 text-base md:text-lg font-medium text-warm-600 text-center tracking-[0.2em] uppercase">
+                            Репетитор по английскому языку
+                        </p>
                         <div class="text-6xl font-serif text-warm-300 leading-none mb-1 text-center select-none">“</div>
-                        
-                        <div class="bg-white p-6 md:p-8 rounded-[2rem] border border-warm-200 shadow-sm w-full text-center flex flex-col justify-between flex-grow min-h-[340px]">
+                        <div class="bg-white p-6 md:p-8 rounded-[2rem] border border-warm-200 shadow-sm w-full text-center flex flex-col justify-between min-h-[320px]">
                             <div class="flex-grow flex flex-col justify-center">
-                                <p class="text-warm-800 text-sm md:text-base italic leading-relaxed mb-4">
+                                <p class="text-warm-800 text-sm md:text-base italic leading-relaxed mb-2">
                                     Мы с Эльвирой встретились, и у меня сразу возникло чувство комфорта и безопасности. На тот момент я хотела просто петь для себя, набраться уверенности и понять возможности своего голоса, поэтому мне было очень важно чувствовать поддержку. <br><br>
                                     К тому же, через пару занятий я поняла, что у Эльвиры большой опыт преподавания и много разных инструментов. Например, даже если я не могла выразить словами свой запрос, она мне подсказывала, помогала, и давала упражнения для отработки именно того, что было важно для меня. <br><br>
                                     Изначально мой голос был "настроен" на хоровое пение, больше с академической подачей, а хотелось больше драйва, выразительности, игры. И с этим Эльвира мне очень помогла, в первую очередь своим примером (как она заряжает, когда поёт!). Она постепенно показывала мне, как ещё я могу звучать, какие выразительные техники могу использовать, и в целом от неё я получила МНОГО ПОДДЕРЖКИ, и каждое занятие добавляло ещё одно "а я могу, у меня получается!". <br><br>
-                                    Сейчас <span class="font-semibold text-stone-900">мой голос стал устойчивее и гибче</span>, мы работали с фокусом на комфорт и безопасность, поэтому занятия были голосу только на пользу. Мы разобрали несколько классных песен, я <span class="font-semibold text-stone-900">стала увереннее не только в вокале, но и в жизни</span>, как будто даже <span class="font-semibold text-stone-900">тембр обычной речи изменился, стал глубже, насыщеннее</span>. <br><br>
-                                    А ещё мне понравилось, что за время общения мы сдружились, с Эльвирой мне легко и приятно, всегда радостно идти на встречу, занятие пролетает легко и после остаётся чувство, что я ещё немного выросла. Спасибо большое 🥰!
+                                    Сейчас мой голос стал устойчивее и гибче, мы работали с фокусом на комфорт и безопасность, поэтому занятия были голосу только на пользу. Мы разобрали несколько классных песен, я стала увереннее не только в вокале, но и в жизни, как будто даже тембр обычной речи изменился, стал глубже, насыщеннее. <br><br>
+                                    А ещё мне понравилось, что за время общения мы сдружились, с Эльвирой мне легко и приятно, всегда радостно идти на встречу, занятие пролетает легко и после остаётся чувство, что я ещё немного выросла. Спасибо большое 🥰! На самом деле очень приятно тебе это высказать, для меня наши занятия были просто отдушиной ❤️ ты супер, Эльвира, я желаю тебе талантливых и благодарных учеников, если я могу еще как-то этому посодействовать то дай знать.
                                 </p>
                             </div>
+                            <span class="text-xs font-normal uppercase tracking-wider text-warm-600 block border-t border-warm-100 pt-4 mt-4">
+                                Развитие вокальной уверенности и раскрытие возможностей голоса
+                            </span>
                         </div>
-                        
-                        <!-- Внизу: Профессия / Автор -->
-                        <p class="mt-4 text-sm md:text-base font-semibold text-warm-700 text-center tracking-[0.15em] uppercase">
-                            — Репетитор по английскому языку
-                        </p>
                     </div>
 
-                    <!-- Отзыв 4 (Руководитель школы музыки) -->
-                    <div class="w-full flex-shrink-0 px-2 flex flex-col justify-between">
-                        <!-- Наверху: Описание проделанной работы -->
-                        <div class="text-center mb-4">
-                            <span class="inline-block bg-stone-100 text-stone-700 text-xs md:text-sm px-4 py-1.5 rounded-full font-medium shadow-sm border border-stone-200/50">
+                    <div class="swiper-slide">
+                        <p class="mb-2 text-base md:text-lg font-medium text-warm-600 text-center tracking-[0.2em] uppercase">
+                            Руководитель школы музыки
+                        </p>
+                        <div class="text-6xl font-serif text-warm-300 leading-none mb-1 text-center select-none">“</div>
+                        <div class="bg-white p-6 md:p-8 rounded-[2rem] border border-warm-200 shadow-sm w-full text-center flex flex-col justify-between min-h-[350px]">
+                            <div class="flex-grow flex flex-col justify-center">
+                                <p class="text-warm-800 text-sm md:text-base italic leading-relaxed mb-6">
+                                    Эльвирочка, спасибо тебе огромное за твою работу, за твой профессионализм. Я за время наших занятий, благодаря тебе, открыла как будто новую планету под названием “вокал”. С тобой заниматься очень интересно. Фундамент ты мне крепкий заложила. Я уже многое понимаю и понимаю, куда дальше двигаться)
+                                </p>
+                            </div>
+                            <span class="text-xs font-normal uppercase tracking-wider text-warm-600 block border-t border-warm-100 pt-4">
                                 Работа с тремором в голосе и зажимом гортани
                             </span>
                         </div>
-                        
-                        <div class="text-6xl font-serif text-warm-300 leading-none mb-1 text-center select-none">“</div>
-                        
-                        <div class="bg-white p-6 md:p-8 rounded-[2rem] border border-warm-200 shadow-sm w-full text-center flex flex-col justify-between flex-grow min-h-[340px]">
-                            <div class="flex-grow flex flex-col justify-center">
-                                <p class="text-warm-800 text-sm md:text-base italic leading-relaxed mb-4">
-                                    Эльвирочка, спасибо тебе огромное за твою работу, за твой профессионализм. Я за время наших занятий, благодаря тебе, открыла как будто новую планету под названием “вокал”. С тобой заниматься очень интересно. <span class="font-semibold text-stone-900">Фундамент ты мне крепкий заложила</span>. Я уже многое понимаю и понимаю, куда дальше двигаться)
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <!-- Внизу: Профессия / Автор -->
-                        <p class="mt-4 text-sm md:text-base font-semibold text-warm-700 text-center tracking-[0.15em] uppercase">
-                            — Руководитель школы музыки
-                        </p>
                     </div>
 
-                    <!-- Отзыв 5 (Вокалист, Автор песен) -->
-                    <div class="w-full flex-shrink-0 px-2 flex flex-col justify-between">
-                        <!-- Наверху: Описание проделанной работы -->
-                        <div class="text-center mb-4">
-                            <span class="inline-block bg-stone-100 text-stone-700 text-xs md:text-sm px-4 py-1.5 rounded-full font-medium shadow-sm border border-stone-200/50">
-                                Преодоление зажимов и расширение возможностей голоса
-                            </span>
-                        </div>
-                        
+                    <div class="swiper-slide">
+                        <p class="mb-2 text-base md:text-lg font-medium text-warm-600 text-center tracking-[0.2em] uppercase">
+                            Вокалист, Автор песен, Актер
+                        </p>
                         <div class="text-6xl font-serif text-warm-300 leading-none mb-1 text-center select-none">“</div>
-                        
-                        <div class="bg-white p-6 md:p-8 rounded-[2rem] border border-warm-200 shadow-sm w-full text-center flex flex-col justify-between flex-grow min-h-[340px]">
+                        <div class="bg-white p-6 md:p-8 rounded-[2rem] border border-warm-200 shadow-sm w-full text-center flex flex-col justify-between min-h-[320px]">
                             <div class="flex-grow flex flex-col justify-center">
-                                <p class="text-warm-800 text-sm md:text-base italic leading-relaxed mb-4">
+                                <p class="text-warm-800 text-sm md:text-base italic leading-relaxed mb-2">
                                     Всю свою сознательную жизнь я пел, это мне очень нравится. Пел без вокального образования, учил песни, подражал их авторам. Меня всё устраивало, и моим друзьям и родным тоже нравилось. Но однажды я почувствовал желание подучиться вокалу, так как некоторые нотки мне давались с большим напряжением, и начал искать преподавателя. Когда услышал как поёт и что говорит об обучении Эльвира, понял, что именно этот человек мне и нужен. И так, мы начали заниматься. <br><br>
-                                    Оказалось, что своим любительским пением я выработал привычки, которые мешали мне свободно петь. Особенно проблема была со звуком А, как будто блок какой-то в горле был. В общем после определённого количества занятий <span class="font-semibold text-stone-900">эта проблема была решена</span>, да и некоторые другие тоже. <br><br>
-                                    <span class="font-semibold text-stone-900">Голос стал мощнее и плотнее, увеличился диапазон</span>. Я стал <span class="font-semibold text-stone-900">легко петь те песни, в которых ранее приходилось напрягаться</span>. И это просто здорово. Я стал решительнее и мне теперь легче выступать на публике, <span class="font-semibold text-stone-900">могу петь более двух часов с чистым не уставшим голосом</span>. <br><br>
+                                    Оказалось, что своим любительским пением я выработал привычки, которые мешали мне свободно петь. Особенно проблема была со звуком А, как будто блок какой-то в горле был. В общем после определённого количества занятий эта проблема была решена, да и некоторые другие тоже. <br><br>
+                                    Голос стал мощнее и плотнее, увеличился диапазон. Я стал легко петь те песни, в которых ранее приходилось напрягаться. И это просто здорово. Я стал решительнее и мне теперь легче выступать на публике, могу петь более двух часов с чистым не уставшим голосом. <br><br>
                                     Я весьма благодарен Эльвире за её труд и терпение. И рекомендую её как человека и преподавателя, который находится на своём месте!
                                 </p>
                             </div>
+                            <span class="text-xs font-normal uppercase tracking-wider text-warm-600 block border-t border-warm-100 pt-4 mt-4">
+                                Преодоление зажимов и расширение возможностей голоса
+                            </span>
                         </div>
-                        
-                        <!-- Внизу: Профессия / Автор -->
-                        <p class="mt-4 text-sm md:text-base font-semibold text-warm-700 text-center tracking-[0.15em] uppercase">
-                            — Вокалист, Автор песен, Актер
-                        </p>
                     </div>
 
-                    <!-- Отзыв 6 (Руководитель IT) -->
-                    <div class="w-full flex-shrink-0 px-2 flex flex-col justify-between">
-                        <!-- Наверху: Описание проделанной работы -->
-                        <div class="text-center mb-4">
-                            <span class="inline-block bg-stone-100 text-stone-700 text-xs md:text-sm px-4 py-1.5 rounded-full font-medium shadow-sm border border-stone-200/50">
+                    <div class="swiper-slide">
+                        <p class="mb-2 text-base md:text-lg font-medium text-warm-600 text-center tracking-[0.2em] uppercase">
+                            Руководитель IT-компании
+                        </p>
+                        <div class="text-6xl font-serif text-warm-300 leading-none mb-1 text-center select-none">“</div>
+                        <div class="bg-white p-6 md:p-8 rounded-[2rem] border border-warm-200 shadow-sm w-full text-center flex flex-col justify-between min-h-[350px]">
+                            <div class="flex-grow flex flex-col justify-center">
+                                <p class="text-warm-800 text-sm md:text-base italic leading-relaxed mb-6">
+                                    Эльвира!!! Спасибо тебе бесконечное, мы проделали огромную работу, и сотворили чудо! Видео операторы не все сняли, в середине песни Катя плакала, а я смотрел на нее и тоже плакал, чуть не сбился с пения из-за этого )))
+                                </p>
+                            </div>
+                            <span class="text-xs font-normal uppercase tracking-wider text-warm-600 block border-t border-warm-100 pt-4">
                                 Подготовка сценического номера к свадьбе
                             </span>
                         </div>
-                        
-                        <div class="text-6xl font-serif text-warm-300 leading-none mb-1 text-center select-none">“</div>
-                        
-                        <div class="bg-white p-6 md:p-8 rounded-[2rem] border border-warm-200 shadow-sm w-full text-center flex flex-col justify-between flex-grow min-h-[340px]">
-                            <div class="flex-grow flex flex-col justify-center">
-                                <p class="text-warm-800 text-sm md:text-base italic leading-relaxed mb-4">
-                                    Эльвира!!! Спасибо тебе бесконечное, мы проделали огромную работу, и <span class="font-semibold text-stone-900">сотворили чудо!</span> Видео операторы не все сняли, в середине песни Катя плакала, а я смотрел на нее и тоже плакал, чуть не сбился с пения из-за этого )))
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <!-- Внизу: Профессия / Автор -->
-                        <p class="mt-4 text-sm md:text-base font-semibold text-warm-700 text-center tracking-[0.15em] uppercase">
-                            — Руководитель IT-компании
-                        </p>
                     </div>
 
-                    <!-- Отзыв 7 (Врач-неонатолог) -->
-                    <div class="w-full flex-shrink-0 px-2 flex flex-col justify-between">
-                        <!-- Наверху: Описание проделанной работы -->
-                        <div class="text-center mb-4">
-                            <span class="inline-block bg-stone-100 text-stone-700 text-xs md:text-sm px-4 py-1.5 rounded-full font-medium shadow-sm border border-stone-200/50">
-                                Восстановление голоса после операции на гортани
-                            </span>
-                        </div>
-                        
+                    <div class="swiper-slide">
+                        <p class="mb-2 text-base md:text-lg font-medium text-warm-600 text-center tracking-[0.2em] uppercase">
+                            Врач-неонатолог
+                        </p>
                         <div class="text-6xl font-serif text-warm-300 leading-none mb-1 text-center select-none">“</div>
-                        
-                        <div class="bg-white p-6 md:p-8 rounded-[2rem] border border-warm-200 shadow-sm w-full text-center flex flex-col justify-between flex-grow min-h-[340px]">
+                        <div class="bg-white p-6 md:p-8 rounded-[2rem] border border-warm-200 shadow-sm w-full text-center flex flex-col justify-between min-h-[320px]">
                             <div class="flex-grow flex flex-col justify-center">
-                                <p class="text-warm-800 text-sm md:text-base italic leading-relaxed mb-4">
-                                    Огромная благодарность Эльвире за <span class="font-semibold text-stone-900">восстановление моего голоса после операции</span>. Если честно, думала, что голос не восстановится. Но очень хотелось хотя бы не сипеть, когда разговариваешь с коллегами. Хоть доктор мне и говорил, что голос восстановится, но мне с трудом в это верилось. И вот Эльвира согласилась со мной поработать в качестве опыта (для нее это тоже было впервые). Забегая вперед скажу, у нее реально получилось. <br><br>
+                                <p class="text-warm-800 text-sm md:text-base italic leading-relaxed mb-2">
+                                    Огромная благодарность Эльвире за восстановление моего голоса после операции. Если честно, думала, что голос не восстановится. Но очень хотелось хотя бы не сипеть, когда разговариваешь с коллегами. Хоть доктор мне и говорил, что голос восстановится, но мне с трудом в это верилось. И вот Эльвира согласилась со мной поработать в качестве опыта (для нее это тоже было впервые). Забегая вперед скажу, у нее реально получилось. <br><br>
                                     После первого урока, я реально думала, что за фигня🫣 Разве можно таким способом вернуть голос!!! Упражнения были несложными, но некоторые реально бесили. Благодарю за твое терпение, мой новоиспеченный фониатр. Скажу по секрету, упражнения я делала вообще не постоянно. Мне видимо хватало общения во время часового урока. <br><br>
-                                    <span class="font-semibold text-stone-900">После месяца занятий, я стала обращать внимание, что голос стал возвращаться</span>. Даже коллеги на работе обратили на это внимание. Я даже приобрела новую привычку - вместо крика приветствия я громко стучу😂 <br><br>
-                                    И вот прошло уже 3 месяца после операции и <span class="font-semibold text-stone-900">мой голос снова со мной</span>. Раньше мне не очень нравился мой голос, а теперь он просто шикарный. <br><br>
+                                    После месяца занятий, я стала обращать внимание, что голос стал возвращаться. Даже коллеги на работе обратили на это внимание. Я даже приобрела новую привычку - вместо крика приветствия я громко стучу😂 <br><br>
+                                    И вот прошло уже 3 месяца после операции и мой голос снова со мной. Раньше мне не очень нравился мой голос, а теперь он просто шикарный. <br><br>
                                     Эльвира, я верю в тебя и думаю тебе стоит освоить и это направление - восстановление голоса уже в качестве фониатра. У тебя с твоим характером и терпением все получится 😘😘😘😘😘
                                 </p>
                             </div>
-                        </div>
-                        
-                        <!-- Внизу: Профессия / Автор -->
-                        <p class="mt-4 text-sm md:text-base font-semibold text-warm-700 text-center tracking-[0.15em] uppercase">
-                            — Врач-неонатолог
-                        </p>
-                    </div>
-
-                    <!-- Отзыв 8 (Архитектор) -->
-                   <div class="w-full flex-shrink-0 px-2 flex flex-col justify-between">
-                        <div class="text-center mb-4">
-                            <span class="inline-block bg-stone-100 text-stone-700 text-xs md:text-sm px-4 py-1.5 rounded-full font-medium shadow-sm border border-stone-200/50">
-                                Работа над звонкостью и плотностью голоса
+                            <span class="text-xs font-normal uppercase tracking-wider text-warm-600 block border-t border-warm-100 pt-4 mt-4">
+                                Восстановление голоса после операции на гортани
                             </span>
                         </div>
-                        
+                    </div>
+
+                    <div class="swiper-slide">
+                        <p class="mb-2 text-base md:text-lg font-medium text-warm-600 text-center tracking-[0.2em] uppercase">
+                            Архитектор, Иллюстратор
+                        </p>
                         <div class="text-6xl font-serif text-warm-300 leading-none mb-1 text-center select-none">“</div>
-                        
-                        <div class="bg-white p-6 md:p-8 rounded-[2rem] border border-warm-200 shadow-sm w-full text-center flex flex-col justify-between flex-grow min-h-[340px]">
+                        <div class="bg-white p-6 md:p-8 rounded-[2rem] border border-warm-200 shadow-sm w-full text-center flex flex-col justify-between min-h-[350px]">
                             <div class="flex-grow flex flex-col justify-center">
-                                <p class="text-warm-800 text-sm md:text-base italic leading-relaxed mb-4">
-                                    Хотела поделиться прорывом, случившимся буквально на днях со мной, спустя полгода после занятий вокалом — <span class="font-semibold text-stone-900">Я, НАКОНЕЦ-ТО, НАЩУПАЛА ТВЭНГ!</span> Те самые резонаторы, которые резонируют в носу )) И несмотря на то, что я смотрела очень много разной информации в интернете на эту тему, здесь заслуга именно Эльвиры... <br><br>
+                                <p class="text-warm-800 text-sm md:text-base italic leading-relaxed text-left mb-4">
+                                    Хотела поделиться прорывом, случившимся буквально на днях со мной, спустя полгода после занятий вокалом — <strong>Я, НАКОНЕЦ-ТО, НАЩУПАЛА ТВЭНГ!</strong> Те самые резонаторы, которые резонируют в носу )) И несмотря на то, что я смотрела очень много разной информации в интернете на эту тему, здесь заслуга именно Эльвиры...
+                                </p>
+                                <p class="text-warm-800 text-sm md:text-base italic leading-relaxed text-left mb-6">
                                     Эльвира — просто супер-препод и замечательный человек, я готова быть амбассадором вашей школы ради нее! Мне все очень-очень понравилось, нащупала много разных новых “мышц”, научилась в целом слушать музыку…
                                 </p>
                             </div>
+                            <span class="text-xs font-normal uppercase tracking-wider text-warm-600 block border-t border-warm-100 pt-4">
+                                Работа над звонкостью и плотностью голоса
+                            </span>
                         </div>
-                        
-                        <p class="mt-4 text-sm md:text-base font-semibold text-warm-700 text-center tracking-[0.15em] uppercase">
-                            — Архитектор, Иллюстратор
-                        </p>
                     </div>
 
                 </div>
+
+                <div class="swiper-pagination"></div>
             </div>
 
-            <div id="reviews-dots" class="flex justify-center gap-2 mt-6"></div>
-
-            <button id="review-prev" class="absolute -left-4 md:-left-16 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-white border border-warm-200 text-warm-600 hover:bg-warm-100 hover:text-warm-900 transition-colors shadow-sm z-10" aria-label="Предыдущий отзыв">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                </svg>
-            </button>
-            <button id="review-next" class="absolute -right-4 md:-right-16 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-white border border-warm-200 text-warm-600 hover:bg-warm-100 hover:text-warm-900 transition-colors shadow-sm z-10" aria-label="Следующий отзыв">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-            </button>
+            <div class="swiper-button-prev !hidden md:!flex !-left-12 lg:!-left-16 !top-[calc(50%+16px)]"></div>
+            <div class="swiper-button-next !hidden md:!flex !-right-12 lg:!-right-16 !top-[calc(50%+16px)]"></div>
             
         </div>
     </div>
 </section>
 
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        new Swiper('.myReviewsSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 40,
+            loop: true,
+            autoHeight: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    });
+</script>
     
 <section id="contact" class="py-24 bg-white relative overflow-hidden">
     <div class="absolute top-0 right-0 w-64 h-64 bg-warm-200 rounded-full blur-3xl opacity-50 -z-10"></div>
