@@ -141,9 +141,9 @@
         </p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
             
-            <button id="open-contact-modal" class="btn-primary px-8 py-4 rounded-full text-base font-medium w-full sm:w-auto text-center transition-all hover:scale-[1.02] active:scale-[0.98]">
-                Записаться на консультацию
-            </button>
+        <button onclick="toggleContactModal(true)" class="inline-block bg-[#44403c] text-white px-8 py-4 rounded-2xl font-medium shadow-md hover:bg-[#2e2b28] transition-all duration-300 transform hover:translate-y-[-2px]">
+        Записаться на консультацию
+        </button>
             </div>
     </div>
 </section>
@@ -997,6 +997,45 @@
             </div>
         </div>
     </div>
+    </footer>
 
+  <div id="contactModal" class="fixed inset-0 z-50 hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4 bg-warm-900/40 backdrop-blur-sm" onclick="if(event.target === this) toggleContactModal(false)">
+    <div class="bg-[#fdfbf7] w-full max-w-md rounded-[2rem] p-8 shadow-2xl border border-warm-200 relative transform scale-95 transition-transform duration-300" onclick="event.stopPropagation()">
+      <button onclick="toggleContactModal(false)" class="absolute top-6 right-6 text-warm-500 hover:text-warm-800 transition-colors text-xl">✕</button>
+      
+      <div class="text-center mt-4">
+        <h3 class="font-serif text-2xl text-warm-900 mb-2">Выберите удобный способ связи</h3>
+        <p class="text-sm text-warm-500 mb-8">Я отвечу вам лично в течение нескольких часов</p>
+        
+        <div class="space-y-4">
+          <a href="https://t.me/your_username" target="_blank" class="flex items-center justify-center gap-3 w-full py-4 bg-white border border-warm-200 hover:border-warm-400 rounded-2xl text-warm-800 font-medium transition-all duration-200 hover:shadow-md">
+            <span class="text-sky-500">Telegram</span>
+          </a>
+          <a href="https://vk.com/your_username" target="_blank" class="flex items-center justify-center gap-3 w-full py-4 bg-white border border-warm-200 hover:border-warm-400 rounded-2xl text-warm-800 font-medium transition-all duration-200 hover:shadow-md">
+            <span class="text-blue-600">ВКонтакте</span>
+          </a>
+          <a href="mailto:your_email@mail.ru" class="flex items-center justify-center gap-3 w-full py-4 bg-[#44403c] text-white rounded-2xl font-medium transition-all duration-200 hover:bg-[#2e2b28] hover:shadow-md">
+            <span>Написать на Email</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleContactModal(show) {
+      const modal = document.getElementById('contactModal');
+      if (show) {
+        modal.classList.remove('hidden');
+        setTimeout(() => { modal.classList.remove('opacity-0'); modal.firstElementChild.classList.remove('scale-95'); }, 10);
+      } else {
+        modal.classList.add('opacity-0');
+        modal.firstElementChild.classList.add('scale-95');
+        setTimeout(() => modal.classList.add('hidden'), 300);
+      }
+    }
+  </script>
+  </body>
+</html>
     </body>
 </html>
