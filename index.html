@@ -491,10 +491,10 @@
           <div class="text-stone-400 text-xs mb-4">1 500 ₽ <span class="text-stone-300">/</span> 60 мин</div>
                   </div>
       </div>
-    <div class="text-center mt-12 mb-6">
-    <a href="#final-contacts" class="inline-block bg-[#44403c] text-white px-10 py-4 rounded-2xl font-medium shadow-md hover:bg-[#2e2b28] transition-all duration-300 transform hover:translate-y-[-2px]">
-    Выбрать формат и связаться
-    </a>
+    <div class="text-center mt-12 mb-6">  
+        <button onclick="toggleContactModal(true)" class="block w-full text-center bg-[#44403c] text-white px-8 py-4 rounded-2xl font-medium shadow-md hover:bg-[#2e2b28] transition-all duration-300 transform hover:translate-y-[-2px]">
+  Выбрать формат
+</button>
 </div>
     </div>
 
@@ -526,9 +526,6 @@
                     <p class="text-stone-500 font-light text-xs md:text-sm leading-relaxed mb-4 md:mb-0">Для тех, кто много говорит на работе и сталкивается с потерей голоса, хрипотой или осиплостью.</p>
                 </div>
                 <div class="flex-shrink-0">
-                    <button class="open-modal-btn inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-stone-800 text-stone-800 text-sm font-medium transition-colors hover:bg-stone-800 hover:text-white">
-                        Записаться
-                    </button>
                 </div>
             </div>
 
@@ -538,9 +535,7 @@
                     <p class="text-stone-500 font-light text-xs md:text-sm leading-relaxed mb-4 md:mb-0">Для тех, чей голос звучит слишком тихо, глухо или слишком высоко.</p>
                 </div>
                 <div class="flex-shrink-0">
-                    <button class="open-modal-btn inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-stone-800 text-stone-800 text-sm font-medium transition-colors hover:bg-stone-800 hover:text-white">
-                        Записаться
-                    </button>
+                    
                 </div>
             </div>
 
@@ -550,9 +545,7 @@
                     <p class="text-stone-500 font-light text-xs md:text-sm leading-relaxed mb-4 md:mb-0">Для тех, кого часто «не слышат» или не воспринимают всерьез.</p>
                 </div>
                 <div class="flex-shrink-0">
-                    <button class="open-modal-btn inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-stone-800 text-stone-800 text-sm font-medium transition-colors hover:bg-stone-800 hover:text-white">
-                        Записаться
-                    </button>
+                   
                 </div>
             </div>
         </div>
@@ -563,15 +556,15 @@
                     <i class="ph ph-gift text-xl"></i>
                 </div>
                 <div>
-                    <h4 class="font-serif text-base md:text-lg mb-1">Structure of each training</h4>
+                    <h4 class="font-serif text-base md:text-lg mb-1">Структура каждого тренинга</h4>
                     <p class="text-xs text-stone-200/90 leading-relaxed font-light">
                         Вводная часть • Практические упражнения • Рекомендации по гигиене голоса • <span class="underline underline-offset-4 decoration-stone-300">Гайд "Как настроиться на важное выступление" (PDF)</span>
                     </p>
                 </div>
             </div>
-            <button class="open-modal-btn w-full sm:w-auto bg-white text-stone-800 hover:bg-stone-100 px-6 py-3 rounded-full text-sm font-medium transition-colors flex-shrink-0">
-                Записаться
-            </button>
+            <button onclick="toggleContactModal(true)" class="inline-block bg-[#44403c] text-white px-8 py-4 rounded-2xl font-medium shadow-md hover:bg-[#2e2b28] transition-all duration-300 transform hover:translate-y-[-2px]">
+            Выбрать тренинг
+            </button> 
         </div>
     </div>
 </section>
