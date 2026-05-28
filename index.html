@@ -383,7 +383,7 @@
     </section>
 
     <!-- Formats Section -->
- <section class="py-16 bg-[#FAF9F6] text-[#4A433A]">
+<section class="py-16 bg-[#FAF9F6] text-[#4A433A]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <div class="text-center mb-12">
@@ -391,8 +391,10 @@
       <p class="text-sm md:text-base text-stone-500 font-sans">Выберите подходящий формат для достижения ваших целей</p>
     </div>
 
+    <!-- Карточки -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch max-w-5xl mx-auto">
       
+      <!-- Уроки вокала -->
       <div class="bg-white rounded-3xl p-8 border border-stone-200 shadow-sm flex flex-col justify-between min-h-[550px]">
         <div>
           <div class="inline-block bg-stone-100 text-[10px] uppercase tracking-wider px-3 py-1 rounded-full text-stone-500 font-medium mb-4">
@@ -422,10 +424,11 @@
         </div>
         
         <div class="mt-8">
-          <div class="text-stone-400 text-xs mb-4">5 000 ₽ <span class="text-stone-300">/</span> 60 мин</div>
-          </div>
+          <div class="text-stone-400 text-xs">5 000 ₽ <span class="text-stone-300">/</span> 60 мин</div>
+        </div>
       </div>
 
+      <!-- Подписка на педагога -->
       <div class="bg-[#4A433A] text-white rounded-3xl p-8 shadow-xl flex flex-col justify-between min-h-[550px] transform lg:-translate-y-2">
         <div>
           <div class="inline-block bg-[#5A5245] text-[10px] uppercase tracking-wider px-3 py-1 rounded-full text-stone-300 font-medium mb-4">
@@ -455,10 +458,11 @@
         </div>
         
         <div class="mt-8">
-          <div class="text-stone-300 text-xs mb-4">12 000 ₽ <span class="text-stone-400">/</span> 30 календарных дней</div>
-          </div>
+          <div class="text-stone-300 text-xs">12 000 ₽ <span class="text-stone-400">/</span> 30 календарных дней</div>
+        </div>
       </div>
 
+      <!-- Групповые уроки -->
       <div class="bg-white rounded-3xl p-8 border border-stone-200 shadow-sm flex flex-col justify-between min-h-[550px]">
         <div>
           <div class="inline-block bg-stone-100 text-[10px] uppercase tracking-wider px-3 py-1 rounded-full text-stone-500 font-medium mb-4">
@@ -488,30 +492,20 @@
         </div>
         
         <div class="mt-8">
-          <div class="text-stone-400 text-xs mb-4">1 500 ₽ <span class="text-stone-300">/</span> 60 мин</div>
-                  </div>
+          <div class="text-stone-400 text-xs">1 500 ₽ <span class="text-stone-300">/</span> 60 мин</div>
+        </div>
       </div>
-    <div class="text-center mt-12 mb-6">  
-<div class="max-w-6xl mx-auto px-4">
-    <!-- Три карточки -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-        <!-- Уроки вокала -->
-        <div class="bg-white rounded-2xl p-6 shadow-md">...</div>
-        <!-- Подписка -->
-        <div class="bg-white rounded-2xl p-6 shadow-md">...</div>
-        <!-- Групповые -->
-        <div class="bg-white rounded-2xl p-6 shadow-md">...</div>
     </div>
 
-    <!-- Кнопка на всю ширину родителя (от левого края 1й до правого края 3й карточки) -->
-    <button onclick="toggleContactModal(true)" 
-            class="block w-full bg-[#44403c] text-white py-4 rounded-2xl font-medium shadow-md hover:bg-[#2e2b28] transition-all duration-300 hover:translate-y-[-2px]">
+    <!-- Кнопка на всю ширину карточек -->
+    <div class="max-w-5xl mx-auto mt-4">
+      <button onclick="toggleContactModal(true)" 
+              class="block w-full bg-[#44403c] text-white py-4 rounded-2xl font-medium shadow-md hover:bg-[#2e2b28] transition-all duration-300 hover:translate-y-[-2px]">
         Записаться на консультацию
-    </button>
-</div>
-</div>
+      </button>
     </div>
 
+    <!-- А также -->
     <div class="mt-16 pt-8 border-t border-stone-200 max-w-5xl mx-auto">
       <div class="text-center text-[10px] uppercase tracking-widest text-stone-400 mb-6 font-medium">А также:</div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-xs md:text-sm text-[#4A433A] font-medium">
