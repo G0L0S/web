@@ -153,71 +153,79 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // =========================================================================
-    // 6. СЛАЙДЕР ОТЗЫВОВ
+    // 6. АДАПТИВНЫЙ ГОРИЗОНТАЛЬНЫЙ СЛАЙДЕР ОТЗЫВОВ (Vite + Tailwind)
     // =========================================================================
-    const track = document.getElementById('reviews-track') || document.getElementById('reviewTrack');
-    const slides = track ? Array.from(track.children) : [];
+    const track = document.getElementById('reviews-track');
     const dotsContainer = document.getElementById('reviews-dots');
     const prevBtn = document.getElementById('review-prev');
     const nextBtn = document.getElementById('review-next');
     
-    if (track && slides.length > 0) {
-        let currentIndex = 0;
+    if (track && dotsContainer) {
+        const slides = Array.from(track.children);
         const totalSlides = slides.length;
+        let currentIndex = 0;
 
-        if (dotsContainer) dotsContainer.innerHTML = '';
+        // Очищаем старые точки перед генерацией новых
+        dotsContainer.innerHTML = '';
 
-        for (let i = 0; i < totalSlides; i++) {
+        // Динамическое создание точек-индикаторов
+        slides.forEach((_, index) => {
             const dot = document.createElement('button');
-            dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${i === 0 ? 'bg-warm-600 w-6' : 'bg-warm-300 hover:bg-warm-400'}`;
-            dot.setAttribute('aria-label', `Перейти к отзыву ${i + 1}`);
-            dot.addEventListener('click', () => goToSlide(i));
-            dotsContainer?.appendChild(dot);
-        }
+            dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                index === 0 ? 'bg-warm-900 w-6' : 'bg-warm-300 hover:bg-warm-400'
+            }`;
+            dot.setAttribute('aria-label', `Перейти к отзыву ${index + 1}`);
+            dot.addEventListener('click', () => updateSlider(index));
+            dotsContainer.appendChild(dot);
+        });
 
-        const dots = dotsContainer ? dotsContainer.children : [];
+        const dots = Array.from(dotsContainer.children);
 
-        function goToSlide(index) {
-            if (index < 0) {
-                currentIndex = totalSlides - 1;
-            } else if (index >= totalSlides) {
-                currentIndex = 0;
-            } else {
-                currentIndex = index;
-            }
-
+        // Функция обновления положения слайдера
+        function updateSlider(index) {
+            currentIndex = index;
+            
+            // Смещаем ленту по оси X
             track.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-            if (dots.length > 0) {
-                Array.from(dots).forEach((dot, i) => {
-                    if (i === currentIndex) {
-                        dot.classList.remove('bg-warm-300', 'w-2.5');
-                        dot.classList.add('bg-warm-600', 'w-6');
-                    } else {
-                        dot.classList.remove('bg-warm-600', 'w-6');
-                        dot.classList.add('bg-warm-300', 'w-2.5');
-                    }
-                });
-            }
+            
+            // Обновляем визуальное состояние точек
+            dots.forEach((dot, idx) => {
+                if (idx === currentIndex) {
+                    dot.className = 'w-2.5 h-2.5 rounded-full transition-all duration-300 bg-warm-900 w-6';
+                } else {
+                    dot.className = 'w-2.5 h-2.5 rounded-full transition-all duration-300 bg-warm-300 hover:bg-warm-400';
+                }
+            });
         }
 
-        prevBtn?.addEventListener('click', () => goToSlide(currentIndex - 1));
-        nextBtn?.addEventListener('click', () => goToSlide(currentIndex + 1));
+        // Обработчики для стрелок навигации
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                const index = (currentIndex - 1 + totalSlides) % totalSlides;
+                updateSlider(index);
+            });
+        }
 
-        let touchStartX = 0;
-        let touchEndX = 0;
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                const index = (currentIndex + 1) % totalSlides;
+                updateSlider(index);
+            });
+        }
 
-        track.addEventListener('touchstart', (e) => {
-            touchStartX = e.touches[0].clientX;
+        // Поддержка свайпов на смартфонах
+        let startX = 0;
+        track.addEventListener('touchstart', e => {
+            startX = e.touches[0].clientX;
         }, { passive: true });
 
-        track.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].clientX;
-            const swipeThreshold = 50;
-            if (touchStartX - touchEndX > swipeThreshold) {
-                goToSlide(currentIndex + 1);
-            } else if (touchEndX - touchStartX > swipeThreshold) {
-                goToSlide(currentIndex - 1);
+        track.addEventListener('touchend', e => {
+            const diff = startX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) { // порог для свайпа
+                const nextIndex = diff > 0 
+                    ? (currentIndex + 1) % totalSlides 
+                    : (currentIndex - 1 + totalSlides) % totalSlides;
+                updateSlider(nextIndex);
             }
         }, { passive: true });
     }
