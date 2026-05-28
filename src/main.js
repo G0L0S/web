@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     closeModalBtns.forEach(btn => btn.addEventListener('click', closeModal));
 
     modal?.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
+        if (e.target === modal || e.target.getElementById?.('modal-overlay')) closeModal();
     });
 
     // =========================================================================
@@ -165,10 +165,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalSlides = slides.length;
         let currentIndex = 0;
 
-        // Очищаем старые точки перед генерацией новых
         dotsContainer.innerHTML = '';
 
-        // Динамическое создание точек-индикаторов
         slides.forEach((_, index) => {
             const dot = document.createElement('button');
             dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${
@@ -181,14 +179,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const dots = Array.from(dotsContainer.children);
 
-        // Функция обновления положения слайдера
         function updateSlider(index) {
             currentIndex = index;
-            
-            // Смещаем ленту по оси X
             track.style.transform = `translateX(-${currentIndex * 100}%)`;
             
-            // Обновляем визуальное состояние точек
             dots.forEach((dot, idx) => {
                 if (idx === currentIndex) {
                     dot.className = 'w-2.5 h-2.5 rounded-full transition-all duration-300 bg-warm-900 w-6';
@@ -198,7 +192,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Обработчики для стрелок навигации
         if (prevBtn) {
             prevBtn.addEventListener('click', () => {
                 const index = (currentIndex - 1 + totalSlides) % totalSlides;
@@ -213,7 +206,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Поддержка свайпов на смартфонах
         let startX = 0;
         track.addEventListener('touchstart', e => {
             startX = e.touches[0].clientX;
@@ -221,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         track.addEventListener('touchend', e => {
             const diff = startX - e.changedTouches[0].clientX;
-            if (Math.abs(diff) > 50) { // порог для свайпа
+            if (Math.abs(diff) > 50) {
                 const nextIndex = diff > 0 
                     ? (currentIndex + 1) % totalSlides 
                     : (currentIndex - 1 + totalSlides) % totalSlides;
