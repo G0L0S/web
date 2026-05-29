@@ -397,7 +397,7 @@
     </section>
 
     <!-- Formats Section -->
-    <section class="py-16 bg-[#FAF9F6] text-[#4A433A]">
+   <section class="py-16 bg-[#FAF9F6] text-[#4A433A]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <div class="text-center mb-12">
@@ -407,10 +407,10 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-5xl mx-auto">
       
-      <div class="bg-white rounded-3xl p-8 border border-stone-200 shadow-sm flex flex-col justify-between min-h-[550px]">
+      <div class="bg-white rounded-3xl p-8 border border-stone-200 shadow-sm flex flex-col justify-between min-h-[420px]">
         <div>
           <h3 class="text-2xl font-serif mb-2">Индивидуальные сессии</h3>
-          <p class="text-xs text-stone-400 mb-6">Голос в деталях: индивидуальная работа и развитие</p>
+          <p class="text-xs text-stone-600 font-medium mb-6">Голос в деталях: индивидуальная работа и развитие</p>
           
           <ul class="space-y-4 text-xs md:text-sm text-stone-600">
             <li class="flex items-start gap-2">
@@ -432,42 +432,48 @@
           </ul>
         </div>
         
-        <div class="mt-8">
-          <div class="text-stone-400 text-xs">5 000 ₽ <span class="text-stone-300">/</span> 60 мин</div>
+        <div class="mt-6">
+          <div class="inline-block bg-[#4A433A] text-white text-xs px-4 py-2 rounded-xl font-medium">
+            5 000 ₽ <span class="text-stone-400">/</span> 60 мин
+          </div>
         </div>
       </div>
 
-<div class="bg-white rounded-3xl p-8 border border-stone-200 shadow-sm flex flex-col justify-between min-h-[550px]">
-  <div>
-    <h3 class="text-2xl font-serif mb-2 text-[#4A433A]">Персональное сопровождение</h3>
-    <p class="text-xs text-stone-400 mb-6">Формат системной работы с голосом для плотного графика</p>
-    
-    <ul class="space-y-4 text-xs md:text-sm text-stone-600">
-      <li class="flex items-start gap-2">
-        <span class="text-stone-400 mt-0.5">✓</span>
-        <span><strong>Формирую индивидуальную программу</strong> и тактический план тренировок на 30 дней</span>
-      </li>
-      <li class="flex items-start gap-2">
-        <span class="text-stone-400 mt-0.5">✓</span>
-        <span><strong>Создаю личную базу упражнений</strong> с индивидуальными аудио-ориентирами</span>
-      </li>
-      <li class="flex items-start gap-2">
-        <span class="text-stone-400 mt-0.5">✓</span>
-        <span><strong>Осуществляю регулярный аудит</strong> вашего прогресса и точностно корректирую нагрузку</span>
-      </li>
-      <li class="flex items-start gap-2">
-        <span class="text-stone-400 mt-0.5">✓</span>
-        <span><strong>Обеспечиваю экспертное сопровождение:</strong> контроль выполнения техник и фиксация правильных голосовых привычек</span>
-      </li>
-    </ul>
-  </div>
-  
-  <div class="mt-8">
-    <div class="text-stone-400 text-xs">12 000 ₽ <span class="text-stone-300">/</span> 30 календарных дней</div>
-  </div>
-</div>
+      <div class="bg-white rounded-3xl p-8 border border-stone-200 shadow-sm flex flex-col justify-between min-h-[420px]">
+        <div>
+          <h3 class="text-2xl font-serif mb-2 text-[#4A433A]">Персональное сопровождение</h3>
+          <p class="text-xs text-stone-600 font-medium mb-6">Формат системной работы с голосом для плотного графика</p>
+          
+          <ul class="space-y-4 text-xs md:text-sm text-stone-600">
+            <li class="flex items-start gap-2">
+              <span class="text-stone-400 mt-0.5">✓</span>
+              <span><strong>Формирую индивидуальную программу</strong> и тактический план тренировок на 30 дней</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-stone-400 mt-0.5">✓</span>
+              <span><strong>Создаю личную базу упражнений</strong> с индивидуальными аудио-ориентирами</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-stone-400 mt-0.5">✓</span>
+              <span><strong>Осуществляю регулярный аудит</strong> вашего прогресса и точностно корректирую нагрузку</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-stone-400 mt-0.5">✓</span>
+              <span><strong>Обеспечиваю экспертное сопровождение:</strong> контроль выполнения техник и фиксация правильных голосовых привычек</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="mt-6">
+          <div class="inline-block bg-[#4A433A] text-white text-xs px-4 py-2 rounded-xl font-medium">
+            12 000 ₽ <span class="text-stone-400">/</span> 30 календарных дней
+          </div>
+        </div>
+      </div>
 
-    </div> <div class="max-w-5xl mx-auto mt-6">
+    </div> 
+
+    <div class="max-w-5xl mx-auto mt-8">
       <button onclick="toggleContactModal(true)" 
               class="block w-full bg-[#44403c] text-white py-4 rounded-2xl font-medium shadow-md hover:bg-[#2e2b28] transition-all duration-300 hover:translate-y-[-2px]">
         Подобрать формат
@@ -477,15 +483,7 @@
     <div class="mt-16 pt-8 border-t border-stone-200 max-w-5xl mx-auto">
       <div class="text-center text-[10px] uppercase tracking-widest text-stone-400 mb-6 font-medium">А также:</div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-xs md:text-sm text-[#4A433A] font-medium">
-        <div class="px-2 border-r last:border-none border-stone-200 flex items-center justify-center min-h-[40px]">Постановка сценического номера</div>
-        <div class="px-2 md:border-r last:border-none border-stone-200 flex items-center justify-center min-h-[40px]">Подготовка к звукозаписи песни или стихотворения</div>
-        <div class="px-2 border-r last:border-none border-stone-200 flex items-center justify-center min-h-[40px]">Ораторское искусство и речевой имидж</div>
-        <div class="px-2 last:border-none border-stone-200 flex items-center justify-center min-h-[40px]">Тематические мастер-классы</div>
-      </div>
-    </div>
-
-  </div>
-</section>
+        <div class="px-2 border-r last:border-none border-stone-200 flex items-center
     <!-- Trainings Section -->
 <section id="trainings" class="py-20 bg-white">
     <div class="max-w-4xl mx-auto px-6">
